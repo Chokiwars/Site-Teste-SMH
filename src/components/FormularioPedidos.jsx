@@ -4,6 +4,18 @@ const produtosDisponiveis = [
   { id: "P0001", descricao: "Produto 33218938", preco: 48.708, estoque: true },
   { id: "P0002", descricao: "Produto 28371922", preco: 39.99, estoque: false },
   { id: "P0003", descricao: "Produto 29319320", preco: 90.315, estoque: true },
+  { id: "2197",  descricao: "Bateria Selada 12ah / 12v",       preco: 500.00,   estoque: true },
+  { id: "0001", descricao: "Mão de obra especializada para instalação dos equipamentos(*)", preco: 1500.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
+  { id: "", descricao: "", preco: 0.00, estoque: true },
 ];
 
 function FormularioPedidos() {
@@ -68,8 +80,8 @@ function FormularioPedidos() {
   };
 
   return (
-    <div className="p-6 bg-gray-200 rounded-xl shadow-lg max-w-md mx-auto">
-      <h2 className="text-lg font-bold mb-3 text-center">Formulário de Pedidos</h2>
+    <div className="p-6 bg-gray-200 rounded-xl shadow-lg max-w-xl mx-auto">
+      <h2 className="text-lg font-bold mb-3 text-center">Formulário de Pedidos (Orçamento)</h2>
 
       {pedidos.map((pedido, index) => (
         <div
