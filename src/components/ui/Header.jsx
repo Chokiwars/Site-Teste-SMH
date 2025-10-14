@@ -19,19 +19,19 @@ const Header = ({ className = '' }) => {
   }, []);
 
   const navigationItems = [
-    { name: 'Home', path: '/homepage', icon: 'Home' },
-    { name: 'Services', path: '#services', icon: 'Settings' },
-    { name: 'Solutions', path: '#solutions', icon: 'Layers' },
-    { name: 'About', path: '#about', icon: 'Users' },
-    { name: 'Proposal Engine', path: '/proposal-engine', icon: 'Calculator' }
+    { name: 'Início', path: '/homepage', icon: 'Home' },
+    { name: 'Sobre Nós', path: '#about', icon: 'Users' },
+    { name: 'Soluções', path: '#solutions', icon: 'Layers' },
+    { name: 'Serviços', path: '#services', icon: 'Settings' },
+    { name: 'Clientes', path: '#clientes', icon: 'Briefcase' },
+    { name: 'Solicitar Proposta', path: '/proposal-engine', icon: 'Calculator' }
   ];
 
   const handleNavigation = (path) => {
     if (path?.startsWith('#')) {
-      // Handle anchor links
       const element = document.querySelector(path);
       if (element) {
-        element?.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
       navigate(path);
@@ -45,17 +45,17 @@ const Header = ({ className = '' }) => {
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-medium border-b border-border' 
+        isScrolled
+          ? 'bg-background/95 backdrop-blur-md shadow-medium border-b border-border'
           : 'bg-transparent'
       } ${className}`}
     >
       <div className="w-full">
         <div className="flex items-center justify-between h-16 px-6 lg:px-8">
           {/* Logo */}
-          <div 
+          <div
             className="flex items-center cursor-pointer group"
             onClick={() => handleNavigation('/homepage')}
           >
@@ -70,30 +70,30 @@ const Header = ({ className = '' }) => {
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-xl font-bold text-primary group-hover:text-accent transition-colors duration-300">
-                  SMH Digital Hub
+                  SMH Sistemas
                 </h1>
-                <p className="text-xs text-text-secondary -mt-1">Technology Solutions</p>
               </div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navigationItems?.slice(0, 4)?.map((item) => (
+            {navigationItems.slice(0, 5).map((item) => (
               <button
-                key={item?.name}
-                onClick={() => handleNavigation(item?.path)}
+                key={item.name}
+                onClick={() => handleNavigation(item.path)}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center space-x-2 group ${
-                  isActivePath(item?.path)
-                    ? 'text-accent bg-accent/10' :'text-foreground hover:text-accent hover:bg-accent/5'
+                  isActivePath(item.path)
+                    ? 'text-accent bg-accent/10'
+                    : 'text-foreground hover:text-accent hover:bg-accent/5'
                 }`}
               >
-                <Icon 
-                  name={item?.icon} 
-                  size={16} 
-                  className="group-hover:scale-110 transition-transform duration-300" 
+                <Icon
+                  name={item.icon}
+                  size={16}
+                  className="group-hover:scale-110 transition-transform duration-300"
                 />
-                <span>{item?.name}</span>
+                <span>{item.name}</span>
               </button>
             ))}
           </nav>
@@ -108,7 +108,7 @@ const Header = ({ className = '' }) => {
               iconPosition="left"
               className="btn-magnetic"
             >
-              Get Proposal
+              Solicitar Proposta
             </Button>
             <Button
               variant="default"
@@ -118,7 +118,7 @@ const Header = ({ className = '' }) => {
               iconPosition="left"
               className="btn-magnetic bg-accent hover:bg-accent/90"
             >
-              Contact Us
+              Fale Conosco
             </Button>
           </div>
 
@@ -128,8 +128,8 @@ const Header = ({ className = '' }) => {
             className="lg:hidden p-2 rounded-md text-foreground hover:text-accent hover:bg-accent/5 transition-colors duration-300"
             aria-label="Toggle mobile menu"
           >
-            <Icon 
-              name={isMobileMenuOpen ? 'X' : 'Menu'} 
+            <Icon
+              name={isMobileMenuOpen ? 'X' : 'Menu'}
               size={24}
               className="transition-transform duration-300"
             />
@@ -137,29 +137,31 @@ const Header = ({ className = '' }) => {
         </div>
 
         {/* Mobile Menu */}
-        <div 
+        <div
           className={`lg:hidden transition-all duration-300 ease-out ${
-            isMobileMenuOpen 
-              ? 'max-h-96 opacity-100' :'max-h-0 opacity-0 overflow-hidden'
+            isMobileMenuOpen
+              ? 'max-h-96 opacity-100'
+              : 'max-h-0 opacity-0 overflow-hidden'
           }`}
         >
           <div className="px-6 py-4 bg-background/95 backdrop-blur-md border-t border-border">
             <nav className="space-y-2">
-              {navigationItems?.map((item) => (
+              {navigationItems.map((item) => (
                 <button
-                  key={item?.name}
-                  onClick={() => handleNavigation(item?.path)}
+                  key={item.name}
+                  onClick={() => handleNavigation(item.path)}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-md text-left transition-all duration-300 ${
-                    isActivePath(item?.path)
-                      ? 'text-accent bg-accent/10' :'text-foreground hover:text-accent hover:bg-accent/5'
+                    isActivePath(item.path)
+                      ? 'text-accent bg-accent/10'
+                      : 'text-foreground hover:text-accent hover:bg-accent/5'
                   }`}
                 >
-                  <Icon name={item?.icon} size={20} />
-                  <span className="font-medium">{item?.name}</span>
+                  <Icon name={item.icon} size={20} />
+                  <span className="font-medium">{item.name}</span>
                 </button>
               ))}
             </nav>
-            
+
             {/* Mobile CTA Buttons */}
             <div className="mt-4 pt-4 border-t border-border space-y-3">
               <Button
@@ -169,7 +171,7 @@ const Header = ({ className = '' }) => {
                 iconName="Calculator"
                 iconPosition="left"
               >
-                Get Custom Proposal
+                Solicitar Proposta
               </Button>
               <Button
                 variant="default"
@@ -179,7 +181,7 @@ const Header = ({ className = '' }) => {
                 iconPosition="left"
                 className="bg-accent hover:bg-accent/90"
               >
-                Contact Us Now
+                Fale Conosco
               </Button>
             </div>
           </div>
