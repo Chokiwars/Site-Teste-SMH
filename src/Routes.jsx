@@ -5,6 +5,7 @@ import ErrorBoundary from "components/ErrorBoundary";
 import NotFound from "pages/NotFound";
 import ProposalEngine from './pages/proposal-engine';
 import Homepage from './pages/homepage';
+import FormularioPedidos from "components/FormularioPedidos";
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
         {/* Define your route here */}
         <Route path="/" element={<Homepage />} />
         <Route path="/proposal-engine" element={<ProposalEngine />} />
+        <Route path="/form" element={<FormularioPedidos/>} />
         <Route path="/homepage" element={<Homepage />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
