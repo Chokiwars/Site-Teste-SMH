@@ -22,7 +22,7 @@ const Header = ({ className = '' }) => {
     { name: 'Início', path: '/homepage', icon: 'Home' },
     { name: 'Sobre Nós', path: '#about', icon: 'Users' },
     { name: 'Soluções', path: '#solutions', icon: 'Layers' },
-    { name: 'Serviços', path: '#services', icon: 'Settings' },
+    { name: 'Serviços', path: '/services', icon: 'Settings' },
     { name: 'Clientes', path: '#clientes', icon: 'Briefcase' },
   ];
 
