@@ -2,20 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion'; 
 
-// 🎯 Definição das variantes de animação fora do componente principal
 const formVariants = {
-    // Entra da direita e some para a esquerda (para simular a troca de telas)
+
     loginInitial: { opacity: 0, x: 50 }, 
     recoveryInitial: { opacity: 0, x: -50 }, 
     
     animate: { opacity: 1, x: 0 },
     
-    // Animação de saída: move para a esquerda ou direita
     loginExit: { opacity: 0, x: -50 },
     recoveryExit: { opacity: 0, x: 50 },
 };
 
-// Tornando-o um componente para melhor isolamento e uso do AnimatePresence
 const LoginForm = ({ handleLoginSubmit, setIsRecoveryMode }) => (
     <motion.form 
         key="login-form" 
@@ -27,7 +24,7 @@ const LoginForm = ({ handleLoginSubmit, setIsRecoveryMode }) => (
         exit="loginExit"
         transition={{ duration: 0.4 }}
     >
-        {/* Campos e Botão de Login (mantidos) */}
+        
         <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
             <input type="email" id="email" required className="appearance-none block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-accent focus:border-accent sm:text-sm transition duration-150" placeholder="seu.email@smh.com"/>
@@ -62,9 +59,9 @@ const RecoveryForm = ({ handleRecoverySubmit, setIsRecoveryMode }) => (
         onSubmit={handleRecoverySubmit} 
         className="space-y-6"
         variants={formVariants}
-        initial="recoveryInitial" // Começa da esquerda (lado oposto ao login)
+        initial="recoveryInitial" 
         animate="animate"
-        exit="recoveryExit" // Sai para a direita
+        exit="recoveryExit"
         transition={{ duration: 0.4 }}
     >
         <p className="text-sm text-gray-600">
@@ -93,7 +90,6 @@ const RecoveryForm = ({ handleRecoverySubmit, setIsRecoveryMode }) => (
 );
 
 
-// --- Componente Principal ---
 const LoginClientes = () => {
     const [isRecoveryMode, setIsRecoveryMode] = useState(false); 
     const [message, setMessage] = useState('');
@@ -108,7 +104,6 @@ const LoginClientes = () => {
         setMessage('Se um email for encontrado, as instruções de recuperação de senha serão enviadas.');
         
         setTimeout(() => {
-            // Volta para a tela de Login
             setIsRecoveryMode(false);
             setMessage(''); 
         }, 3000); 
@@ -124,13 +119,13 @@ const LoginClientes = () => {
                 className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-gray-200"
             >
                 
-                {/* Título e Subtítulo */}
+                
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-extrabold text-primary">
-                        {isRecoveryMode ? 'Recuperar Senha' : 'Acesso Restrito'}
+                        {isRecoveryMode ? 'Recuperar Senha' : 'Área do cliente'}
                     </h1>
                     <p className="text-sm text-gray-500 mt-2">
-                        {isRecoveryMode ? 'Mantenha sua conta segura.' : 'Entre com suas credenciais para obter mais informações de valores.'}
+                        {isRecoveryMode ? 'Mantenha sua conta segura.' : 'Entre na sua conta para obter mais informações de valores.'}
                     </p>
                 </div>
 

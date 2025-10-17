@@ -9,6 +9,7 @@ import Header from "components/ui/Header";
 import FormularioPedidos from "pages/FormularioPedidos/FormularioPedidos";
 import ServicesPage from './pages/services';
 import LoginClientes from './pages/LoginClientes';
+import Clientes from "./pages/NossosClientes";
 
 
 const Routes = () => {
@@ -24,6 +25,7 @@ const Routes = () => {
         <Route path="/formulario-pedidos" element={<FormularioPedidos/>} />
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/clientes" element={<Clientes />} />
         <Route path="/login" element={<LoginClientes />} />
         <Route path="*" element={<NotFound />} />
         

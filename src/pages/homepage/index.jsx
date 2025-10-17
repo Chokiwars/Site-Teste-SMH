@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 
+
 // Importação dos ícones do Lucide
 import { 
   Linkedin, Instagram, Facebook, 
