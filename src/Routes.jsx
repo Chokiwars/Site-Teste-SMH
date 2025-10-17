@@ -6,7 +6,8 @@ import NotFound from "pages/NotFound";
 import ProposalEngine from './pages/proposal-engine';
 import Homepage from './pages/homepage';
 import Header from "components/ui/Header";
-import FormularioPedidos from "pages/FormularioPedidos/FormularioPedidos";
+import FormularioPedidosFuncionarios from "pages/FormularioPedidosFuncionarios/FormularioPedidosFuncionarios";
+import FormularioPedidosClientes from "pages/FormularioPedidosClientes/FormularioPedidosClientes";
 
 const Routes = () => {
   return (
@@ -18,7 +19,8 @@ const Routes = () => {
         {/* Define your route here */}
         <Route path="/" element={<Homepage />} />
         <Route path="/proposal-engine" element={<ProposalEngine />} />
-        <Route path="/formulario-pedidos" element={<FormularioPedidos/>} />
+        <Route path="/formulario-pedidos-funcionarios" element={<FormularioPedidosFuncionarios/>} />
+        <Route path="/formulario-pedidos-clientes" element={<FormularioPedidosClientes/>} />
         <Route path="/homepage" element={<Homepage />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>

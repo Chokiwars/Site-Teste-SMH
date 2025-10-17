@@ -37,9 +37,11 @@ function FormularioPedidos() {
       const pedidosParse = JSON.parse(pedidosSalvos);
       return pedidosParse.map((p) => ({ produto: p.produto || null, quantidade: p.quantidade }));
     }
-    return []; // Começa vazio
+    return [];
   });
 
+  const [filtros, setFiltros] = useState(pedidos.map(() => ""));
+  const [abertos, setAbertos] = useState(pedidos.map(() => false));
   const fadeRef = useRef(null);
 
   useEffect(() => {
@@ -48,25 +50,58 @@ function FormularioPedidos() {
 
   const adicionarPedido = () => {
     setPedidos([...pedidos, { produto: null, quantidade: 1 }]);
+    setFiltros([...filtros, ""]);
+    setAbertos([...abertos, false]);
   };
 
   const removerPedido = (index) => {
     const novosPedidos = [...pedidos];
     novosPedidos.splice(index, 1);
     setPedidos(novosPedidos);
+
+    const novosFiltros = [...filtros];
+    novosFiltros.splice(index, 1);
+    setFiltros(novosFiltros);
+
+    const novosAbertos = [...abertos];
+    novosAbertos.splice(index, 1);
+    setAbertos(novosAbertos);
   };
 
-  const atualizarProduto = (index, idProduto) => {
-    const produtoSelecionado = produtosDisponiveis.find((p) => p.id === idProduto);
+  const atualizarProduto = (index, produto) => {
     const novosPedidos = [...pedidos];
-    novosPedidos[index].produto = produtoSelecionado || null;
+    novosPedidos[index].produto = produto;
     setPedidos(novosPedidos);
+
+    const novosFiltros = [...filtros];
+    novosFiltros[index] = "";
+    setFiltros(novosFiltros);
+
+    const novosAbertos = [...abertos];
+    novosAbertos[index] = false;
+    setAbertos(novosAbertos);
   };
 
   const atualizarQuantidade = (index, quantidade) => {
     const novosPedidos = [...pedidos];
     novosPedidos[index].quantidade = quantidade;
     setPedidos(novosPedidos);
+  };
+
+  const atualizarFiltro = (index, valor) => {
+    const novosFiltros = [...filtros];
+    novosFiltros[index] = valor;
+    setFiltros(novosFiltros);
+
+    const novosAbertos = [...abertos];
+    novosAbertos[index] = true; // Abre lista ao digitar
+    setAbertos(novosAbertos);
+  };
+
+  const abrirLista = (index) => {
+    const novosAbertos = [...abertos];
+    novosAbertos[index] = true;
+    setAbertos(novosAbertos);
   };
 
   const valorTotal = pedidos.reduce(
@@ -108,82 +143,80 @@ function FormularioPedidos() {
           Formulário de Pedidos
         </h2>
 
-        {pedidos.map((pedido, index) => (
-          <div
-            key={index}
-            className="relative grid grid-cols-3 gap-3 items-center mb-3 bg-gray-100 p-3 rounded-lg border border-[#d62828]/30"
-          >
-            <div>
-              <select
-                value={pedido.produto ? pedido.produto.id : ""}
-                onChange={(e) => atualizarProduto(index, e.target.value)}
-                className={`p-2 rounded border w-full focus:outline-none focus:ring-2 ${
-                  !pedido.produto ? "border-red-500" : "border-gray-300"
-                } focus:ring-[#d62828]`}
-              >
-                <option value="">Selecione um produto</option>
-                <optgroup label="Equipamentos">
-                  {produtosDisponiveis
-                    .filter((p) => p.id.startsWith("EQ"))
-                    .map((produto) => (
-                      <option key={produto.id} value={produto.id}>
-                        {produto.descricao}
-                      </option>
-                    ))}
-                </optgroup>
-                <optgroup label="Materiais">
-                  {produtosDisponiveis
-                    .filter((p) => p.id.startsWith("MT"))
-                    .map((produto) => (
-                      <option key={produto.id} value={produto.id}>
-                        {produto.descricao}
-                      </option>
-                    ))}
-                </optgroup>
-                <optgroup label="Outros">
-                  {produtosDisponiveis
-                    .filter((p) => !p.id.startsWith("MT") && !p.id.startsWith("EQ"))
-                    .map((produto) => (
-                      <option key={produto.id} value={produto.id}>
-                        {produto.descricao || "Produto não especificado"}
-                      </option>
-                    ))}
-                </optgroup>
-              </select>
-            </div>
+        {pedidos.map((pedido, index) => {
+          const produtosFiltrados = produtosDisponiveis.filter((p) =>
+            p.descricao.toLowerCase().includes(filtros[index]?.toLowerCase() || "")
+          );
 
-            <div>
-              <input
-                type="number"
-                value={pedido.quantidade}
-                min={1}
-                onChange={(e) => atualizarQuantidade(index, Number(e.target.value))}
-                className="p-2 rounded border w-full focus:outline-none focus:ring-2 focus:ring-[#d62828]"
-              />
-            </div>
-
-            <div className="text-sm">
-              <p>{pedido.produto ? pedido.produto.descricao : "Nenhum produto selecionado"}</p>
-              {pedido.produto && (
-                <p className="text-gray-600 text-xs">
-                  LPU: R${pedido.produto.preco.toFixed(2)}{" "}
-                  {pedido.produto.estoque ? (
-                    <span className="text-green-600 font-semibold">(Em estoque)</span>
-                  ) : (
-                    <span className="text-red-600 font-semibold">(Sem estoque)</span>
-                  )}
-                </p>
-              )}
-            </div>
-
-            <button
-              onClick={() => removerPedido(index)}
-              className="absolute right-2 top-2 bg-[#d62828] text-white rounded-full w-8 h-8 font-bold hover:bg-red-700 transition"
+          return (
+            <div
+              key={index}
+              className="relative grid grid-cols-3 gap-3 items-center mb-3 bg-gray-100 p-3 rounded-lg border border-[#d62828]/30"
             >
-              X
-            </button>
-          </div>
-        ))}
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Pesquisar produto..."
+                  value={filtros[index]}
+                  onChange={(e) => atualizarFiltro(index, e.target.value)}
+                  onFocus={() => abrirLista(index)}
+                  className={`p-2 rounded border w-full focus:outline-none focus:ring-2 ${
+                    !pedido.produto ? "border-red-500" : "border-gray-300"
+                  } focus:ring-[#d62828]`}
+                />
+                {abertos[index] && (
+                  <ul className="absolute z-50 w-full bg-white border max-h-52 overflow-y-auto rounded shadow-lg mt-1">
+                    {(filtros[index] ? produtosFiltrados : produtosDisponiveis).map((produto) => (
+                      <li
+                        key={produto.id}
+                        onClick={() => atualizarProduto(index, produto)}
+                        className={`p-2 cursor-pointer hover:bg-[#0b1e36] hover:text-white transition ${
+                          !produto.estoque ? "text-gray-400 cursor-not-allowed" : ""
+                        }`}
+                      >
+                        {produto.descricao} {produto.estoque ? "" : "(Sem estoque)"}
+                      </li>
+                    ))}
+                    {(filtros[index] ? produtosFiltrados : produtosDisponiveis).length === 0 && (
+                      <li className="p-2 text-gray-500">Nenhum produto encontrado</li>
+                    )}
+                  </ul>
+                )}
+              </div>
+
+              <div>
+                <input
+                  type="number"
+                  value={pedido.quantidade}
+                  min={1}
+                  onChange={(e) => atualizarQuantidade(index, Number(e.target.value))}
+                  className="p-2 rounded border w-full focus:outline-none focus:ring-2 focus:ring-[#d62828]"
+                />
+              </div>
+
+              <div className="text-sm">
+                <p>{pedido.produto ? pedido.produto.descricao : "Nenhum produto selecionado"}</p>
+                {pedido.produto && (
+                  <p className="text-gray-600 text-xs">
+                    LPU: R${pedido.produto.preco.toFixed(2)}{" "}
+                    {pedido.produto.estoque ? (
+                      <span className="text-green-600 font-semibold">(Em estoque)</span>
+                    ) : (
+                      <span className="text-red-600 font-semibold">(Sem estoque)</span>
+                    )}
+                  </p>
+                )}
+              </div>
+
+              <button
+                onClick={() => removerPedido(index)}
+                className="absolute right-2 top-2 bg-[#d62828] text-white rounded-full w-8 h-8 font-bold hover:bg-red-700 transition"
+              >
+                X
+              </button>
+            </div>
+          );
+        })}
 
         <button
           onClick={adicionarPedido}
