@@ -1,23 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
+import "../FundoAnimado.css"; // ← Import do fundo animado
 
-// Adicionei imagens fictícias para os produtos (substitua pelos links reais)
 const produtosDisponiveis = [
-  { id: "EQ001", descricao: "Sirene", preco: 120.0, estoque: true, img: "https://via.placeholder.com/80?text=Sirene" },
-  { id: "EQ002", descricao: "Detector", preco: 85.5, estoque: true, img: "https://via.placeholder.com/80?text=Detector" },
-  { id: "EQ003", descricao: "Central de Alarme", preco: 450.0, estoque: true, img: "https://via.placeholder.com/80?text=Central" },
-  { id: "EQ004", descricao: "Cilindro", preco: 210.0, estoque: true, img: "https://via.placeholder.com/80?text=Cilindro" },
-  { id: "EQ005", descricao: "Acionador Manual", preco: 130.0, estoque: true, img: "https://via.placeholder.com/80?text=Acionador" },
-  { id: "2197", descricao: "Bateria Selada 12ah / 12v", preco: 500.0, estoque: true, img: "https://via.placeholder.com/80?text=Bateria" },
-  { id: "MT002", descricao: "Fonte", preco: 220.0, estoque: true, img: "https://via.placeholder.com/80?text=Fonte" },
-  { id: "MT003", descricao: "Filtro", preco: 75.0, estoque: true, img: "https://via.placeholder.com/80?text=Filtro" },
-  { id: "MT004", descricao: "Módulo", preco: 145.0, estoque: true, img: "https://via.placeholder.com/80?text=Módulo" },
-  { id: "MT005", descricao: "Válvula", preco: 90.0, estoque: true, img: "https://via.placeholder.com/80?text=Válvula" },
-  { id: "MT006", descricao: "Chave", preco: 40.0, estoque: true, img: "https://via.placeholder.com/80?text=Chave" },
-  { id: "MT007", descricao: "Placa de sinalização", preco: 60.0, estoque: true, img: "https://via.placeholder.com/80?text=Placa" },
-  { id: "P0001", descricao: "Produto 33218938", preco: 48.708, estoque: true, img: "https://via.placeholder.com/80?text=P0001" },
-  { id: "P0002", descricao: "Produto 28371922", preco: 39.99, estoque: false, img: "https://via.placeholder.com/80?text=P0002" },
-  { id: "P0003", descricao: "Produto 29319320", preco: 90.315, estoque: true, img: "https://via.placeholder.com/80?text=P0003" },
-  { id: "0001", descricao: "Mão de obra especializada para instalação dos equipamentos(*)", preco: 1500.0, estoque: true, img: "https://via.placeholder.com/80?text=Mão+de+obra" },
+  { id: "EQ001", descricao: "Sirene", preco: 120.0, estoque: true, img: "https://via.placeholder.com/100?text=Sirene" },
+  { id: "EQ002", descricao: "Detector", preco: 85.5, estoque: true, img: "https://via.placeholder.com/100?text=Detector" },
+  { id: "EQ003", descricao: "Central de Alarme", preco: 450.0, estoque: true, img: "https://via.placeholder.com/100?text=Central" },
+  { id: "EQ004", descricao: "Cilindro", preco: 210.0, estoque: true, img: "https://via.placeholder.com/100?text=Cilindro" },
+  { id: "EQ005", descricao: "Acionador Manual", preco: 130.0, estoque: true, img: "https://via.placeholder.com/100?text=Acionador" },
+  { id: "2197", descricao: "Bateria Selada 12ah / 12v", preco: 500.0, estoque: true, img: "https://via.placeholder.com/100?text=Bateria" },
+  { id: "MT002", descricao: "Fonte", preco: 220.0, estoque: true, img: "https://via.placeholder.com/100?text=Fonte" },
+  { id: "MT003", descricao: "Filtro", preco: 75.0, estoque: true, img: "https://via.placeholder.com/100?text=Filtro" },
+  { id: "MT004", descricao: "Módulo", preco: 145.0, estoque: true, img: "https://via.placeholder.com/100?text=Módulo" },
+  { id: "MT005", descricao: "Válvula", preco: 90.0, estoque: true, img: "https://via.placeholder.com/100?text=Válvula" },
+  { id: "MT006", descricao: "Chave", preco: 40.0, estoque: true, img: "https://via.placeholder.com/100?text=Chave" },
+  { id: "MT007", descricao: "Placa de sinalização", preco: 60.0, estoque: true, img: "https://via.placeholder.com/100?text=Placa" },
+  { id: "0001", descricao: "Mão de obra especializada para instalação dos equipamentos(*)", preco: 1500.0, estoque: true, img: "https://via.placeholder.com/100?text=Mão+de+obra" },
 ];
 
 function FormularioPedidosCliente() {
@@ -42,18 +39,12 @@ function FormularioPedidosCliente() {
     const novosPedidos = [...pedidos];
     novosPedidos[index].produto = produto;
     setPedidos(novosPedidos);
-    const novosFiltros = [...filtros];
-    novosFiltros[index] = "";
-    setFiltros(novosFiltros);
     const novosAbertos = [...abertos];
     novosAbertos[index] = false;
     setAbertos(novosAbertos);
-  };
-
-  const atualizarQuantidade = (index, quantidade) => {
-    const novosPedidos = [...pedidos];
-    novosPedidos[index].quantidade = quantidade;
-    setPedidos(novosPedidos);
+    const novosFiltros = [...filtros];
+    novosFiltros[index] = "";
+    setFiltros(novosFiltros);
   };
 
   const atualizarFiltro = (index, valor) => {
@@ -65,10 +56,10 @@ function FormularioPedidosCliente() {
     setAbertos(novosAbertos);
   };
 
-  const abrirLista = (index) => {
-    const novosAbertos = [...abertos];
-    novosAbertos[index] = true;
-    setAbertos(novosAbertos);
+  const atualizarQuantidade = (index, quantidade) => {
+    const novosPedidos = [...pedidos];
+    novosPedidos[index].quantidade = quantidade;
+    setPedidos(novosPedidos);
   };
 
   const valorTotal = pedidos.reduce(
@@ -84,23 +75,19 @@ function FormularioPedidosCliente() {
       return;
     }
     alert("Pedido enviado com sucesso!");
-    console.log("Pedidos enviados:", pedidos);
   };
 
   useEffect(() => {
-    if (fadeRef.current) {
-      fadeRef.current.classList.add("opacity-100", "translate-y-0");
-    }
+    if (fadeRef.current) fadeRef.current.classList.add("opacity-100", "translate-y-0");
   }, []);
 
   return (
-    <div className="animated-bg flex justify-center items-start w-full min-h-screen pt-28 pb-10">
+    <div className="animated-bg min-h-screen flex justify-center items-start pt-20 pb-10">
       <div
         ref={fadeRef}
-        className="fade-in p-6 bg-white rounded-xl shadow-lg max-w-4xl w-full mx-auto opacity-0 translate-y-5 transition-all duration-700"
-        style={{ borderTop: "6px solid #202e3fff" }}
+        className="fade-in p-8 bg-white rounded-2xl shadow-2xl max-w-4xl w-full mx-auto opacity-0 translate-y-5 transition-all duration-700 border-t-[6px] border-[#0b1e36]"
       >
-        <h2 className="text-2xl font-bold mb-5 text-center text-[#0b1e36]">
+        <h2 className="text-3xl font-bold mb-8 text-center text-[#0b1e36] tracking-wide">
           Faça seu Pedido
         </h2>
 
@@ -112,35 +99,38 @@ function FormularioPedidosCliente() {
           return (
             <div
               key={index}
-              className="relative grid grid-cols-1 md:grid-cols-4 gap-4 items-center mb-5 p-4 rounded-lg border shadow hover:shadow-lg transition bg-gray-50"
+              className="relative grid grid-cols-1 md:grid-cols-4 gap-4 items-center mb-6 p-5 rounded-xl border border-gray-200 shadow-md bg-gray-50 hover:shadow-xl transition-all duration-300"
             >
-              <div>
+              <div className="flex justify-center items-center">
                 {pedido.produto ? (
                   <img
                     src={pedido.produto.img}
                     alt={pedido.produto.descricao}
-                    className="w-20 h-20 object-cover rounded"
+                    className="w-24 h-24 object-cover rounded-lg border border-gray-300 shadow-sm"
                   />
                 ) : (
-                  <div className="w-20 h-20 bg-gray-200 flex items-center justify-center rounded text-gray-400">
+                  <div className="w-24 h-24 bg-gray-200 flex items-center justify-center rounded-lg text-gray-400 text-2xl">
                     ?
                   </div>
                 )}
               </div>
 
-              <div className="md:col-span-2">
+              <div className="md:col-span-2 relative">
                 <input
                   type="text"
                   placeholder="Pesquisar produto..."
                   value={filtros[index]}
                   onChange={(e) => atualizarFiltro(index, e.target.value)}
-                  onFocus={() => abrirLista(index)}
-                  className={`p-2 rounded border w-full focus:outline-none focus:ring-2 ${
-                    !pedido.produto ? "border-red-500" : "border-gray-300"
-                  } focus:ring-[#d62828] mb-2`}
+                  onFocus={() => {
+                    const novos = [...abertos];
+                    novos[index] = true;
+                    setAbertos(novos);
+                  }}
+                  className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-[#0b1e36] mb-2"
                 />
+
                 {abertos[index] && (
-                  <ul className="absolute z-50 w-full bg-white border max-h-60 overflow-y-auto rounded shadow-lg mt-1">
+                  <ul className="absolute z-50 w-full bg-white border rounded-lg shadow-lg max-h-60 overflow-y-auto">
                     {(filtros[index] ? produtosFiltrados : produtosDisponiveis).map((produto) => (
                       <li
                         key={produto.id}
@@ -149,7 +139,7 @@ function FormularioPedidosCliente() {
                           !produto.estoque ? "text-gray-400 cursor-not-allowed" : ""
                         }`}
                       >
-                        {produto.descricao} - R${produto.preco.toFixed(2)}{" "}
+                        {produto.descricao} — <span className="font-semibold">R${produto.preco.toFixed(2)}</span>{" "}
                         {!produto.estoque && "(Sem estoque)"}
                       </li>
                     ))}
@@ -159,7 +149,7 @@ function FormularioPedidosCliente() {
                   </ul>
                 )}
                 {pedido.produto && (
-                  <p className="text-gray-700 mt-1">{pedido.produto.descricao}</p>
+                  <p className="text-gray-600 mt-1 text-sm">{pedido.produto.descricao}</p>
                 )}
               </div>
 
@@ -169,15 +159,15 @@ function FormularioPedidosCliente() {
                   value={pedido.quantidade}
                   min={1}
                   onChange={(e) => atualizarQuantidade(index, Number(e.target.value))}
-                  className="p-2 rounded border w-full focus:outline-none focus:ring-2 focus:ring-[#d62828]"
+                  className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-[#d62828]"
                 />
               </div>
 
               <button
                 onClick={() => removerPedido(index)}
-                className="absolute top-2 right-2 bg-[#d62828] text-white rounded-full w-8 h-8 font-bold hover:bg-red-700 transition"
+                className="absolute top-3 right-3 bg-[#d62828] text-white rounded-full w-8 h-8 font-bold hover:bg-red-700 transition"
               >
-                X
+                ×
               </button>
             </div>
           );
@@ -185,15 +175,15 @@ function FormularioPedidosCliente() {
 
         <button
           onClick={adicionarPedido}
-          className="bg-[#0b1e36] hover:bg-blue-700 text-white px-4 py-2 rounded-lg mt-2 transition-all"
+          className="bg-[#0b1e36] hover:bg-blue-600 text-white px-5 py-2 rounded-lg mt-4 font-semibold transition-all duration-300"
         >
           + Adicionar Produto
         </button>
 
-        <div className="bg-gray-50 p-4 mt-6 rounded-lg shadow-inner border border-[#0b1e36]/20">
-          <h3 className="font-semibold text-center text-[#0b1e36] mb-3">Resumo do Pedido</h3>
-          <table className="w-full text-sm border-collapse border border-gray-300">
-            <thead>
+        <div className="bg-gray-50 p-5 mt-8 rounded-xl shadow-inner border border-gray-200">
+          <h3 className="font-semibold text-center text-[#0b1e36] text-lg mb-3">Resumo do Pedido</h3>
+          <table className="w-full text-sm border-collapse border border-gray-300 rounded-lg overflow-hidden">
+            <thead className="bg-[#0b1e36] text-white">
               <tr>
                 <th className="border px-2 py-1">Produto</th>
                 <th className="border px-2 py-1 text-center">Qtd</th>
@@ -204,11 +194,7 @@ function FormularioPedidosCliente() {
               {pedidos.map((p, i) => (
                 <tr
                   key={i}
-                  className={
-                    !p.produto || (p.produto && !p.produto.estoque)
-                      ? "opacity-50 text-gray-500"
-                      : ""
-                  }
+                  className={!p.produto || (p.produto && !p.produto.estoque) ? "opacity-50 text-gray-500" : ""}
                 >
                   <td className="border px-2 py-1">{p.produto ? p.produto.descricao : "-"}</td>
                   <td className="border px-2 py-1 text-center">{p.quantidade}</td>
@@ -221,18 +207,18 @@ function FormularioPedidosCliente() {
               ))}
             </tbody>
           </table>
-          <p className="mt-2 font-bold text-right text-[#0b1e36]">
-            Valor Total: R${valorTotal.toFixed(2)}
+          <p className="mt-3 font-bold text-right text-[#0b1e36] text-lg">
+            Total: R${valorTotal.toFixed(2)}
           </p>
         </div>
 
         <button
           onClick={handleEnviar}
           disabled={botaoDesabilitado}
-          className={`mt-4 w-full py-2 rounded-lg font-bold transition-all ${
+          className={`mt-6 w-full py-3 rounded-lg font-bold text-lg tracking-wide transition-all duration-300 ${
             botaoDesabilitado
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-[#0b1e36] hover:bg-[#d62828] text-white"
+              ? "bg-gray-400 cursor-not-allowed text-white"
+              : "bg-[#0b1e36] hover:bg-[#d62828] text-white shadow-md hover:shadow-lg"
           }`}
         >
           Enviar Pedido
