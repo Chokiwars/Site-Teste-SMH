@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./FundoAnimado.css"; // Fundo animado
+import "../FundoAnimado.css"; // Fundo animado
 
 const produtosDisponiveis = [
   // EQUIPAMENTOS
