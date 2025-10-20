@@ -2,155 +2,201 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Componente para exibir a logo de cada cliente
-const ClientLogoBox = ({ clientName, logoUrl }) => (
-  <div 
-    className="flex-1 flex items-center justify-center p-6 bg-white rounded-lg border border-gray-200 shadow-md h-24 md:h-32 transition-transform duration-300 hover:shadow-xl hover:scale-[1.02]"
-    style={{ color: 'var(--smh-900)' }}
-  >
-    <div className="flex items-center justify-center w-full h-full p-2">
-      <img 
-        src={logoUrl} 
-        alt={clientName} 
-        className="max-w-full max-h-full object-contain"
-      />
-    </div>
-  </div>
-);
-
-// Variantes de animação do Framer Motion
-const cardVariants = {
-  initial: { opacity: 0, y: 50, scale: 0.95 },
-  animate: { opacity: 1, y: 0, scale: 1 },
-  exit: { opacity: 0, y: -50, scale: 0.95 },
+const wordAnimation = {
+  initial: { y: 50, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", damping: 10, stiffness: 100 },
+  },
 };
 
-export default function SMHClientsCarousel() {
-  const [index, setIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+const AnimatedText = ({ text, className, style, delay = 0 }) => {
+  const words = text.split(' ');
+  const container = {
+    animate: {
+      transition: { delayChildren: delay, staggerChildren: 0.05 },
+    },
+  };
+  return (
+    <motion.div className={`flex flex-wrap ${className || ''}`} style={style} variants={container} initial="initial" animate="animate">
+      {words.map((word, index) => (
+        <span key={index} className="overflow-hidden inline-block mr-2">
+          <motion.span className="inline-block" variants={wordAnimation}>
+            {word + (index < words.length - 1 ? ' ' : '')}
+          </motion.span>
+        </span>
+      ))}
+    </motion.div>
+  );
+};
 
-  const clients = [
-    // Link corrigido para HTTPS:
-    { id: 1, name: 'Accumed Glicomed', logoUrl: 'https://www.smh.com.br/wp-content/uploads/2021/03/accumed.png' }, 
-    { id: 2, name: 'Adata', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/ADATA_Technology_logo_svg.png' },
-    { id: 3, name: 'Rede Saúde Gama', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
-    { id: 4, name: 'Logística Delta', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
-    { id: 5, name: 'Indústria Épsilon', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg' },
-    { id: 6, name: 'Universidade Zeta', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png' },
-    { id: 7, name: 'Fintech Ómega', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Instagram_logo_2016.svg' },
-    { id: 8, name: 'Serviços Sigma', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg' },
-  ];
+const ClientLogoBox = ({ clientName, logoUrl }) => (
+  <div 
+    className="flex-1 flex items-center justify-center p-6 bg-white rounded-lg border border-gray-200 shadow-md h-24 md:h-32 transition-transform duration-300 hover:shadow-xl hover:scale-[1.02]"
+    style={{ color: 'var(--smh-900)' }}
+  >
+    <div className="flex items-center justify-center w-full h-full p-2">
+      <img src={logoUrl} alt={clientName} className="max-w-full max-h-full object-contain" />
+    </div>
+  </div>
+);
 
-  // Determina quantos clientes mostrar por slide
-  const getVisibleCount = () => {
-    if (typeof window === 'undefined') return 4; // Previne erro no Server-Side Rendering
-    if (window.innerWidth >= 1024) return 4;
-    if (window.innerWidth >= 640) return 3;
-    return 2;
-  };
+const cardVariants = {
+  initial: { opacity: 0, y: 50, scale: 0.95 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  exit: { opacity: 0, y: -50, scale: 0.95 },
+};
 
-  const visibleClientsCount = getVisibleCount();
-  const totalSlides = Math.ceil(clients.length / visibleClientsCount);
+function ClientsCarousel({ clients }) {
+  const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const next = useCallback(() => {
-    setIndex(prev => (prev + 1) % totalSlides);
-  }, [totalSlides]);
+  const getVisibleCount = () => {
+    if (typeof window === 'undefined') return 4;
+    if (window.innerWidth >= 1024) return 4;
+    if (window.innerWidth >= 640) return 3;
+    return 2;
+  };
 
-  const prev = () => setIndex(prev => (prev - 1 + totalSlides) % totalSlides);
+  const visibleClientsCount = getVisibleCount();
+  const totalSlides = Math.ceil(clients.length / visibleClientsCount);
 
-  useEffect(() => {
-    // Adicionamos a lógica para atualizar a contagem de cards visíveis na mudança de tamanho da tela
-    const handleResize = () => setIndex(0); // Reinicia o carrossel ao redimensionar
+  const next = useCallback(() => {
+    setIndex(prev => (prev + 1) % totalSlides);
+  }, [totalSlides]);
+
+  const prev = () => setIndex(prev => (prev - 1 + totalSlides) % totalSlides);
+
+  useEffect(() => {
+    const handleResize = () => setIndex(0);
     window.addEventListener('resize', handleResize);
-    
-    if (isPaused) return;
-    const interval = setInterval(next, 5000);
-    
-    return () => {
-        clearInterval(interval);
-        window.removeEventListener('resize', handleResize);
+
+    if (isPaused) return;
+
+    const interval = setInterval(next, 5000);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', handleResize);
     };
-  }, [isPaused, next]);
+  }, [isPaused, next]);
 
-  const startIndex = index * visibleClientsCount;
-  const currentClients = clients.slice(startIndex, startIndex + visibleClientsCount);
+  const startIndex = index * visibleClientsCount;
+  const currentClients = clients.slice(startIndex, startIndex + visibleClientsCount);
+  const animationKey = index;
 
-  const animationKey = index;
-
-  return (
-    <div
-      style={{
-        ['--smh-900']: '#0C233F',
-        ['--smh-800']: '#29314A',
-        ['--smh-accent1']: '#ED1C24',
-        ['--smh-accent2']: '#EF313A'
-      }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-50 text-[var(--smh-900)] p-4 sm:p-6"
-    >
-      {/* Título e Carrossel (sem alterações) */}
-        <motion.h1 
-            // ...
-            className="text-3xl sm:text-4xl font-extrabold mb-1 text-center"
-            style={{ color: 'var(--smh-900)' }}
+  return (
+    <div 
+      onMouseEnter={() => setIsPaused(true)} 
+      onMouseLeave={() => setIsPaused(false)}
+      className="relative w-full max-w-6xl mx-auto mb-12"
+    >
+      <AnimatePresence mode="wait">
+        <motion.div 
+          key={animationKey}
+          className="flex justify-center gap-4 sm:gap-6"
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{ duration: 0.6 }}
         >
-            Clientes Parceiros
-        </motion.h1>
-        <motion.p 
-            // ...
-            className="mb-8 sm:mb-12 text-md sm:text-lg font-medium text-center"
-            style={{ color: 'var(--smh-accent1)' }}
-        >
-            Grandes marcas que confiam na SMH Sistemas
-        </motion.p>
-        
-        <div className="relative w-full max-w-6xl">
-          <AnimatePresence mode="wait">
-            <motion.div 
-              key={animationKey}
-              className="flex justify-center gap-4 sm:gap-6"
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ duration: 0.6 }}
-            >
-              {currentClients.map((client, i) => (
-                <motion.div 
-                  key={client.id} 
-                  className="w-1/2 sm:w-1/3 lg:w-1/4 flex-shrink-0"
-                  variants={cardVariants}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                >
-                  <ClientLogoBox clientName={client.name} logoUrl={client.logoUrl} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          {currentClients.map((client, i) => (
+            <motion.div 
+              key={client.id} 
+              className="w-1/2 sm:w-1/3 lg:w-1/4 flex-shrink-0"
+              variants={cardVariants}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+            >
+              <ClientLogoBox clientName={client.name} logoUrl={client.logoUrl} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
 
-          {/* Botões de navegação e Indicadores (sem alterações) */}
-            <motion.button onClick={prev} className="absolute z-20 p-3 bg-white text-[var(--smh-900)] rounded-full shadow-lg transition border border-gray-200 left-0 top-1/2 -translate-y-1/2">
-                <ChevronLeft size={24} />
-            </motion.button>
-            <motion.button onClick={next} className="absolute z-20 p-3 bg-white text-[var(--smh-900)] rounded-full shadow-lg transition border border-gray-200 right-0 top-1/2 -translate-y-1/2">
-                <ChevronRight size={24} />
-            </motion.button>
-        </div>
+      <motion.button onClick={prev} className="absolute z-20 p-3 bg-white text-[var(--smh-900)] rounded-full shadow-lg transition border border-gray-200 left-0 top-1/2 -translate-y-1/2">
+        <ChevronLeft size={24} />
+      </motion.button>
+      <motion.button onClick={next} className="absolute z-20 p-3 bg-white text-[var(--smh-900)] rounded-full shadow-lg transition border border-gray-200 right-0 top-1/2 -translate-y-1/2">
+        <ChevronRight size={24} />
+      </motion.button>
 
-        <div className="mt-8 sm:mt-12 flex space-x-2">
-          {Array.from({ length: totalSlides }).map((_, i) => (
-            <motion.button
-              key={i}
-              onClick={() => setIndex(i)}
-              animate={{ 
-                backgroundColor: i === index ? 'var(--smh-accent1)' : 'rgb(209, 213, 219)', 
-                width: i === index ? '20px' : '12px' 
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="h-3 rounded-full"
-            />
-          ))}
-        </div>
-      </div>
-  );
+      <div className="mt-8 flex space-x-2 justify-center">
+        {Array.from({ length: totalSlides }).map((_, i) => (
+          <motion.button
+            key={i}
+            onClick={() => setIndex(i)}
+            animate={{ backgroundColor: i === index ? 'var(--smh-accent1)' : 'rgb(209, 213, 219)', width: i === index ? '20px' : '12px' }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="h-3 rounded-full"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function SMHClientsCarousel() {
+  const groupedClients = {
+    Bancos: [
+      { id: 5, name: 'Banco do Brasil', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Banco_do_Brasil_logo.svg' },
+      { id: 6, name: 'Bradesco', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Banco_Bradesco_logo_%28horizontal%29.png' },
+      { id: 8, name: 'Banco BMG', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Logo_do_Banco_Bmg.svg' },
+      { id: 9, name: 'Banif Banco', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Logo_banif.jpg' },
+      { id: 10, name: 'Banrisul', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Banrisul_logotipo_2022.svg' },
+      { id: 16, name: 'BTG Pactual', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Btg-logo-blue.svg' },
+      { id: 17, name: 'Banco BV', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Banco_BV_Logo.svg' },
+      { id: 38, name: 'Julius Bar', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/Julius_B%C3%A4r_Logo.svg' }
+    ],
+    Tecnologia: [
+      { id: 2, name: 'Adata', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/ADATA_Technology_logo_svg.png' },
+      { id: 31, name: 'Google', logoUrl: 'https://pngimg.com/uploads/google/google_PNG19644.png' },
+      { id: 34, name: 'IBM', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
+      { id: 44, name: 'Microsoft', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
+      { id: 41, name: 'Linkedin', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/LinkedIn_2021.svg' },
+      { id: 36, name: 'Ipiranga', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Ipiranga_Logo.jpg' }
+    ],
+    Energia: [
+      { id: 3, name: 'AES Eletropaulo', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/AES_Eletropaulo.svg' },
+      { id: 30, name: 'Furnas', logoUrl: 'https://images.seeklogo.com/logo-png/23/1/furnas-logo-png_seeklogo-237269.png' },
+      { id: 26, name: 'ExxonMobil', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/18/Exxon_Mobil_Logo.svg' },
+    ],
+    Outros: [
+      { id: 1, name: 'Accumed Glicomed', logoUrl: 'https://www.smh.com.br/wp-content/uploads/2021/03/accumed.png' },
+      { id: 27, name: 'Farmácias São João', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Logotipo_Farm%C3%A1cias_S%C3%A3o_Jo%C3%A3o.jpg' },
+      { id: 39, name: 'Iron BR', logoUrl: 'https://ironbr.com.br/wp-content/uploads/2019/08/div_center-branco.png' },
+    ]
+  };
+
+  return (
+    <div
+      style={{
+        ['--smh-900']: '#0C233F',
+        ['--smh-800']: '#29314A',
+        ['--smh-accent1']: '#ED1C24',
+        ['--smh-accent2']: '#EF313A',
+      }}
+      className="pt-6 min-h-screen flex flex-col items-center justify-center bg-gray-50 text-[var(--smh-900)] p-4 sm:p-6"
+    >
+      <AnimatedText 
+        text="Clientes Parceiros"
+        className="text-3xl sm:text-4xl font-extrabold mb-1 text-center justify-center"
+        style={{ color: 'var(--smh-900)' }}
+        delay={0.1} 
+      />
+      <AnimatedText 
+        text="Grandes marcas que confiam na SMH Sistemas"
+        className="mb-8 sm:mb-12 text-md sm:text-lg font-medium text-center justify-center"
+        style={{ color: 'var(--smh-accent1)' }}
+        delay={0.4} 
+      />
+
+      {Object.entries(groupedClients).map(([groupName, clients]) => (
+        <section key={groupName} className="w-full max-w-6xl mb-16">
+          <h2 className="text-2xl font-bold mb-6 text-center">{groupName}</h2>
+          <ClientsCarousel clients={clients} />
+        </section>
+      ))}
+    </div>
+  );
 }

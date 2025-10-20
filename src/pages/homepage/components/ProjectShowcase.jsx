@@ -3,98 +3,86 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
-import imgAirport from '@/assets/images/airport.jpg';
-import imgComercialCenter from '@/assets/images/comercial-center.jpg';
-import imgConstruction from '@/assets/images/construction.jpg';
-import imgCPD from '@/assets/images/cpd.jpg';
-import imgDataCenter from '@/assets/images/data-center.jpg';
-import imgIndustries from '@/assets/images/industries.jpg';
-import imgLogistics from '@/assets/images/logistics.jpg';
-import imgMall from '@/assets/images/mall.jpg';
-import imgMining from '@/assets/images/mining.jpg';
-import imgPort from '@/assets/images/ports.jpg';
-import imgTelemarketing from '@/assets/images/telemarketing.jpg';
-
 const ProjectShowcase = ({ onViewProject }) => {
   const [activeMarket, setActiveMarket] = useState(0);
 
   const markets = [
     {
       id: 1,
-      name: 'Aeroportos',
+      name: 'Data Center',
       description:
         'Sistemas de detecção e combate a incêndio de alta performance para a segurança de terminais, hangares e infraestruturas aeroportuárias.',
-      image: imgAirport,
+      image: 'https://assets.ibm.com/is/image/ibm/22_27_p_gorodenkoff-549:2x1?dpr=on%2C1.25&wid=960&hei=480',
     },
     {
       id: 2,
       name: 'Centros Comerciais',
       description:
         'Soluções robustas para a proteção de grandes complexos comerciais, garantindo a segurança de pessoas e patrimônio.',
-      image: imgComercialCenter,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/7/78/Westminster_Arcade.jpg',
     },
     {
       id: 3,
       name: 'Construção Civil',
       description:
         'Proteção contra incêndio em novas edificações e reformas, com foco em sistemas que se integram à arquitetura moderna.',
-      image: imgConstruction,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/5/57/Factory_of_National_Cement_Share_Company.jpg',
     },
     {
       id: 4,
       name: 'Salas Técnicas (CPDs)',
       description:
         'Prevenção e combate a incêndio em ambientes críticos com equipamentos sensíveis, usando agentes limpos que não danificam os ativos.',
-      image: imgCPD,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/5/54/Floridaserversfront1.jpg',
     },
     {
       id: 5,
-      name: 'Data Centers',
+      name: 'Aeroportos',
       description:
         'Sistemas avançados de proteção contra incêndio para a continuidade de operações em data centers hyperscale e colocation.',
-      image: imgDataCenter,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/c/c4/20140308_Airport_ground_operations.jpg',
     },
     {
       id: 6,
       name: 'Indústrias',
       description:
         'Soluções personalizadas para ambientes industriais com riscos específicos, protegendo linhas de produção e maquinário.',
-      image: imgIndustries,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Kunda_tsemenditehas.jpg',
     },
     {
       id: 7,
       name: 'Logística',
       description:
         'Proteção de centros de distribuição, armazéns e estoques, com sistemas que garantem a segurança das mercadorias.',
-      image: imgLogistics,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/9/97/Automatisches_Kleinteilelager.jpg',
     },
     {
       id: 8,
       name: 'Mineração',
       description:
         'Tecnologia de ponta para a proteção de equipamentos pesados e infraestruturas em operações de mineração, em ambientes desafiadores.',
-      image: imgMining,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Kalgoorlie_open_cast_mine.jpg',
     },
     {
       id: 9,
       name: 'Portos',
       description:
         'Segurança contra incêndio para instalações portuárias, terminais de carga e áreas de armazenamento de grande volume.',
-      image: imgPort,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Porto_de_Lisboa_%282%29.jpg',
     },
     {
       id: 10,
       name: 'Shopping Centers',
       description:
         'Sistemas abrangentes para a proteção de shopping centers, assegurando a segurança dos visitantes e do complexo comercial.',
-      image: imgMall,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Mall_of_Tripla_sis%C3%A4kuvia_2.jpg',
     },
     {
       id: 11,
       name: 'Telecomunicações',
       description:
         'Soluções críticas para centrais de telecomunicações, protegendo equipamentos eletrônicos e garantindo a continuidade dos serviços.',
-      image: imgTelemarketing,
+      image: 'https://blog.tactium.com.br/wp-content/themes/softium/script/timthumb.php?src=https://blog.tactium.com.br/wp-content/uploads/2016/02/como-melhorar-performance-do-seu-telemarketing-ativo.jpg&w=930&h=480&zc=1&q=100',
     },
   ];
 
@@ -123,7 +111,7 @@ const ProjectShowcase = ({ onViewProject }) => {
             Mercados Atendidos
           </h2>
           <p className="text-xl text-text-secondary max-w-4xl mx-auto">
-            A SMH SISTEMAS é especializada na Proteção Contra Incêndio de Ambientes de Missão Crítica e Riscos Especiais, 
+            A SMH SISTEMAS é especializada na Proteção Contra Incêndio de Ambientes de Missão Crítica e Riscos Especiais, 
             atendendo a diversos setores.
           </p>
         </motion.div>
@@ -135,7 +123,6 @@ const ProjectShowcase = ({ onViewProject }) => {
               
               {/* Imagem com transição fluida */}
               <div className="relative h-[500px] overflow-hidden">
-
                 <AnimatePresence mode="wait">
                   {markets.map((market, index) =>
                     index === activeMarket ? (
@@ -225,7 +212,7 @@ const ProjectShowcase = ({ onViewProject }) => {
             onClick={() => onViewProject({ title: 'Novo Projeto' })}
             iconName="MessageSquare"
             iconPosition="left"
-            className="px-8 py-4 btn-magnetic border-accent text-accent hover:bg-accent hover:text-white"
+            className="px-8 py-4 btn‑magnetic border‑accent text‑accent hover:bg‑accent hover:text‑white"
           >
             Fale Conosco
           </Button>
