@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../FundoAnimado.css"; // Fundo animado
 
 const produtosDisponiveis = [
   // EQUIPAMENTOS
@@ -30,7 +29,7 @@ const produtosDisponiveis = [
   },
 ];
 
-function FormularioPedidos() {
+function FormularioPedidosFuncionarios() {
   const [pedidos, setPedidos] = useState(() => {
     const pedidosSalvos = localStorage.getItem("pedidos");
     if (pedidosSalvos) {
@@ -94,7 +93,7 @@ function FormularioPedidos() {
     setFiltros(novosFiltros);
 
     const novosAbertos = [...abertos];
-    novosAbertos[index] = true; // Abre lista ao digitar
+    novosAbertos[index] = true;
     setAbertos(novosAbertos);
   };
 
@@ -133,7 +132,7 @@ function FormularioPedidos() {
   }, []);
 
   return (
-    <div className="animated-bg flex justify-center items-start w-full min-h-screen pt-28 pb-10">
+    <div className="flex justify-center items-start w-full min-h-screen pt-28 pb-10 bg-white">
       <div
         ref={fadeRef}
         className="fade-in p-6 bg-white rounded-xl shadow-lg max-w-2xl w-full mx-auto opacity-0 translate-y-5 transition-all duration-700"
@@ -279,4 +278,4 @@ function FormularioPedidos() {
   );
 }
 
-export default FormularioPedidos;
+export default FormularioPedidosFuncionarios;
