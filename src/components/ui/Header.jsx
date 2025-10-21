@@ -27,9 +27,12 @@ const Header = ({ className = '' }) => {
     { name: 'Soluções', path: '#solutions', icon: 'Layers' },
     { name: 'Serviços', path: '/services', icon: 'Settings' },
     { name: 'Clientes', path: '/clientes', icon: 'Briefcase' },
-    { name: 'Formulario de Funcionarios', path: '/formulario-pedidos-funcionarios', icon: 'Home'},
-    { name: 'Formulario de Clientes', path: '/formulario-pedidos-clientes', icon: 'Home'},
-    { name: 'Login', path: '/login', icon: 'User'}
+    { name: 'FormularioC', path: '/formulario-pedidos-clientes', icon: 'Home'},
+    { name: 'FormularioF', path: '/formulario-pedidos-funcionarios', icon: 'Home'},
+    { name: 'LoginC', path: '/login-clientes', icon: 'User'},
+    { name: 'LoginF', path: '/login-funcionarios', icon: 'User'},
+    { name: 'CadastroC', path: '/cadastro-clientes', icon: 'Users'},
+    { name: 'CadastroF', path: '/cadastro-funcionarios', icon: 'Users'},
   ];
 
   const handleNavigation = (path) => {
@@ -71,7 +74,7 @@ const Header = ({ className = '' }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navigationItems.slice(0, 8).map((item) => (
+            {navigationItems.slice(0, 12).map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNavigation(item.path)}
