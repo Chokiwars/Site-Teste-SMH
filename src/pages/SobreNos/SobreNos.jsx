@@ -6,8 +6,8 @@ const imagens = {
   historia: "src/assets/images/historia.jpeg",
   missao: "src/assets/images/missao.jpg",
   valores: "src/assets/images/valores.jpg",
-  equipe: "src/assets/images/equipe.jpeg",
-  contato: "src/assets/images/contato.jpeg",
+  equipe: "src/assets/images/equipe.jpg",
+  contato: "src/assets/images/contato.png",
 };
 
 // Variantes de animação
