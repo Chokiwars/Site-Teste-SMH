@@ -70,154 +70,92 @@ function SobreNos() {
         </motion.p>
 
         <div className="space-y-20">
-          {/* História */}
-          <motion.section
-            variants={float}
-            initial="hidden"
-            whileInView="visible"
-            whileHover="hover"
-            viewport={{ once: true, amount: 0.2 }}
-            className="bg-white/10 backdrop-blur-lg p-10 rounded-3xl shadow-xl transition-transform duration-300"
-          >
-            <div className="flex flex-col md:flex-row items-center gap-10">
-              <motion.img
-                src={imagens.historia}
-                alt="História"
-                className="w-28 h-28"
-                initial={{ rotate: -10, opacity: 0 }}
-                whileInView={{ rotate: 0, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              />
-              <div>
-                <h2 className="text-4xl font-bold text-white mb-4">Nossa História</h2>
-                <p className="text-gray-200 text-lg leading-relaxed">
-                  Fundada com o propósito de oferecer sistemas modernos e confiáveis, a SMH nasceu da
-                  paixão por tecnologia e do compromisso com a segurança de nossos clientes.
-                  Desenvolvemos projetos personalizados, unindo eficiência e simplicidade.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Missão */}
-          <motion.section
-            variants={float}
-            initial="hidden"
-            whileInView="visible"
-            whileHover="hover"
-            viewport={{ once: true, amount: 0.2 }}
-            className="bg-white/10 backdrop-blur-lg p-10 rounded-3xl shadow-xl transition-transform duration-300"
-          >
-            <div className="flex flex-col md:flex-row-reverse items-center gap-10">
-              <motion.img
-                src={imagens.missao}
-                alt="Missão"
-                className="w-28 h-28"
-                initial={{ rotate: 10, opacity: 0 }}
-                whileInView={{ rotate: 0, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              />
-              <div>
-                <h2 className="text-4xl font-bold text-white mb-4">Nossa Missão</h2>
-                <p className="text-gray-200 text-lg leading-relaxed">
-                  Garantir a tranquilidade e satisfação dos nossos clientes através de soluções seguras,
-                  acessíveis e tecnológicas, promovendo desenvolvimento sustentável e confiança em cada
-                  parceria.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Valores */}
-          <motion.section
-            variants={float}
-            initial="hidden"
-            whileInView="visible"
-            whileHover="hover"
-            viewport={{ once: true, amount: 0.2 }}
-            className="bg-white/10 backdrop-blur-lg p-10 rounded-3xl shadow-xl transition-transform duration-300"
-          >
-            <div className="flex flex-col md:flex-row items-start gap-10">
-              <motion.img
-                src={imagens.valores}
-                alt="Valores"
-                className="w-28 h-28 mt-1"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              />
-              <div>
-                <h2 className="text-4xl font-bold text-white mb-4">Nossos Valores</h2>
+          {/* Cada seção */}
+          {[
+            {
+              id: "historia",
+              titulo: "Nossa História",
+              texto:
+                "Fundada com o propósito de oferecer sistemas modernos e confiáveis, a SMH nasceu da paixão por tecnologia e do compromisso com a segurança de nossos clientes. Desenvolvemos projetos personalizados, unindo eficiência e simplicidade.",
+              reverso: false,
+            },
+            {
+              id: "missao",
+              titulo: "Nossa Missão",
+              texto:
+                "Garantir a tranquilidade e satisfação dos nossos clientes através de soluções seguras, acessíveis e tecnológicas, promovendo desenvolvimento sustentável e confiança em cada parceria.",
+              reverso: true,
+            },
+            {
+              id: "valores",
+              titulo: "Nossos Valores",
+              texto: (
                 <ul className="list-disc list-inside space-y-2 text-gray-200 text-lg">
                   <li>💡 Inovação constante e busca por excelência</li>
                   <li>🤝 Comprometimento e transparência</li>
                   <li>🔒 Segurança e confiança em cada serviço</li>
                   <li>🌱 Sustentabilidade e responsabilidade social</li>
                 </ul>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Equipe */}
-          <motion.section
-            variants={float}
-            initial="hidden"
-            whileInView="visible"
-            whileHover="hover"
-            viewport={{ once: true, amount: 0.2 }}
-            className="bg-white/10 backdrop-blur-lg p-10 rounded-3xl shadow-xl transition-transform duration-300"
-          >
-            <div className="flex flex-col md:flex-row-reverse items-center gap-10">
-              <motion.img
-                src={imagens.equipe}
-                alt="Equipe"
-                className="w-28 h-28"
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7 }}
-              />
-              <div>
-                <h2 className="text-4xl font-bold text-white mb-4">Nossa Equipe</h2>
-                <p className="text-gray-200 text-lg leading-relaxed">
-                  Contamos com uma equipe multidisciplinar apaixonada por tecnologia e inovação. Cada
-                  membro contribui com suas habilidades únicas para tornar nossos produtos e serviços
-                  ainda melhores.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Contato */}
-          <motion.section
-            variants={float}
-            initial="hidden"
-            whileInView="visible"
-            whileHover="hover"
-            viewport={{ once: true, amount: 0.2 }}
-            className="bg-white/10 backdrop-blur-lg p-10 rounded-3xl shadow-xl transition-transform duration-300"
-          >
-            <div className="flex flex-col md:flex-row items-center gap-10">
-              <motion.img
-                src={imagens.contato}
-                alt="Contato"
-                className="w-28 h-28"
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              />
-              <div>
-                <h2 className="text-4xl font-bold text-white mb-4">Entre em Contato</h2>
+              ),
+              reverso: false,
+            },
+            {
+              id: "equipe",
+              titulo: "Nossa Equipe",
+              texto:
+                "Contamos com uma equipe multidisciplinar apaixonada por tecnologia e inovação. Cada membro contribui com suas habilidades únicas para tornar nossos produtos e serviços ainda melhores.",
+              reverso: true,
+            },
+            {
+              id: "contato",
+              titulo: "Entre em Contato",
+              texto: (
                 <p className="text-gray-200 text-lg leading-relaxed">
                   Quer saber mais sobre nós ou tirar suas dúvidas? Ficaremos felizes em conversar com
                   você!
                   <br />
-                  📧 <span className="font-semibold text-[#ff4747]">contato@smh.com.br</span>
+                  📧{" "}
+                  <span className="font-semibold text-[#ff4747]">contato@smh.com.br</span>
                 </p>
+              ),
+              reverso: false,
+            },
+          ].map((secao, index) => (
+            <motion.section
+              key={secao.id}
+              variants={float}
+              initial="hidden"
+              whileInView="visible"
+              whileHover="hover"
+              viewport={{ once: true, amount: 0.2 }}
+              className="bg-white/10 backdrop-blur-lg p-0 rounded-3xl shadow-xl overflow-hidden transition-transform duration-300"
+            >
+              <div
+                className={`flex flex-col md:flex-row ${
+                  secao.reverso ? "md:flex-row-reverse" : ""
+                } items-stretch h-[400px]`}
+              >
+                {/* Imagem ocupa todo o lado esquerdo/direito */}
+                <motion.img
+                  src={imagens[secao.id]}
+                  alt={secao.titulo}
+                  className="w-full md:w-1/2 h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8 }}
+                />
+
+                {/* Texto */}
+                <div className="flex flex-col justify-center p-10 md:w-1/2">
+                  <h2 className="text-4xl font-bold text-white mb-4">{secao.titulo}</h2>
+                  <div>{secao.texto}</div>
+                </div>
               </div>
-            </div>
-          </motion.section>
+            </motion.section>
+          ))}
         </div>
 
+        {/* Rodapé */}
         <motion.footer
           className="mt-20 text-center text-sm text-gray-400 border-t border-white/20 pt-8"
           variants={fadeUp}
