@@ -208,6 +208,56 @@
     }
   },
 
+  "servicesPage": {
+    "mainTitle": "Explore Our Services",
+    "mainSubtitle": "Discover how SMH Systems can boost your operation with high-level technology.",
+    "card": {
+      "keyFocus": "Key Focus Areas:",
+      "viewDetails": "View Details"
+    },
+    "modal": {
+      "benefitsTitle": "Benefits and Details",
+      "requestQuote": "Request a Quote"
+    },
+    "list": [
+      {
+        "title": "Preventive Maintenance",
+        "description": "We perform periodic inspections and technical adjustments to prevent failures and keep systems always operational.",
+        "features": ["One-time", "Periodic", "Performance Optimization"]
+      },
+      {
+        "title": "Corrective Maintenance",
+        "description": "We act on the immediate identification and repair of failures, quickly restoring system functionality.",
+        "features": ["Infrastructure", "Equipment", "Labor", "24/7 Support"]
+      },
+      {
+        "title": "System Adaptation",
+        "description": "We adapt and update existing systems to meet technical standards and specific client needs.",
+        "features": ["Infrastructure", "Equipment", "Labor", "Legal Compliance"]
+      },
+      {
+        "title": "Leak Test",
+        "description": "We check the sealing of pipes and connections to ensure there are no leaks in pressurized systems.",
+        "features": ["Leak Inspection", "Detailed Reports", "Operational Safety"]
+      },
+      {
+        "title": "Ultrasound Test",
+        "description": "We use ultrasonic technology to detect internal flaws in materials and components without causing damage.",
+        "features": ["Non-Destructive Analysis", "Crack Detection", "Integrity Assessment"]
+      },
+      {
+        "title": "Hydrostatic Test",
+        "description": "We conduct tests with pressurized water to assess the strength and integrity of fire combat networks.",
+        "features": ["Strength Assessment", "Fire Networks", "Technical Certification"]
+      },
+      {
+        "title": "Siren Test",
+        "description": "We inspect and test sound alarm systems to ensure their effectiveness in emergency situations.",
+        "features": ["Alarm Verification", "Emergency Simulation", "Reliability"]
+      }
+    ]
+  },
+
   "footer": {
     "logoAlt": "SMH Systems Logo",
     "companyName": "SMH Systems",
