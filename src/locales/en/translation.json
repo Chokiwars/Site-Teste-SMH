@@ -7,20 +7,94 @@
   "form": "Form",
   "register": "Register",
   "login": "Login",
-  "compliance": "Compliance",
+  "nav_compliance": "Compliance",
+  "compliance": {
+    "pageContent": {
+      "hero": {
+        "title": "Compliance, Ethics, and Quality",
+        "subtitle": "Commitment to integrity, transparency, and excellence in every action."
+      },
+      "introduction": {
+        "title": "Our Commitment to Integrity",
+        "p1": "At <span class='text-[#ff4747] font-semibold'>SMH SISTEMAS</span>, we value ethics, transparency, and integrity in all actions. Our compliance program ensures alignment with the highest governance standards.",
+        "p2": "We implement clear policies, continuous training, and rigorous audits to promote a fair and secure environment."
+      },
+      "policiesSection": {
+        "title": "Codes and Policies",
+        "viewButtonText": "View"
+      },
+      "whistleblowerChannel": {
+        "title": "Whistleblower Channel",
+        "description": "An essential tool to reinforce our compliance policy. We guarantee anonymity and protection for channel users.",
+        "followUp": "We investigate all reports seriously and responsibly.",
+        "card": {
+          "title": "Reporting Form",
+          "description": "All requests will be sent to the Ethics Committee for analysis and action.",
+          "buttonText": "Access Channel",
+          "href": "https://forms.office.com/pages/responsepage.aspx?id=8uuXJkgddEqd_fOHq_ONNNvQDMz0ccBCvKopez40knxURTM0UEw4UzYxR1hJVjQ1U0g3SEVaOEJOMi4u&web=1&wdLOR=c2F8BED5A-7AB1-CF49-9D5F-B4334A16D368"
+        }
+      },
+      "certificationsSection": {
+        "preTitle": "Valuing Quality",
+        "title": "ISO Certifications",
+        "description": "Our commitment to excellence is evident in every action and achievement.",
+        "viewButtonText": "View Certificate"
+      },
+      "footer": {
+        "copyrightText": "© {YEAR} SMH — All rights reserved."
+      }
+    },
+    "policies": [
+      {
+        "title": "Code of Ethics and Conduct"
+      },
+      {
+        "title": "Quality Policy"
+      },
+      {
+        "title": "Anti-Bribery Policy"
+      },
+      {
+        "title": "Compliance Policy"
+      }
+    ],
+    "certifications": [
+      {
+        "icon": "Award",
+        "title": "ISO 37001:2017",
+        "subtitle": "(Anti-Bribery Management)",
+        "description": "Promotes a culture of transparency and responsibility with anti-bribery practices."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "ISO 37301:2021",
+        "subtitle": "(Compliance Management)",
+        "description": "Ensures compliance with laws and ethical practices with a focus on governance."
+      },
+      {
+        "icon": "CheckCircle",
+        "title": "ISO 9001:2015",
+        "subtitle": "(Quality Management)",
+        "description": "Focus on customer satisfaction and continuous process improvement."
+      }
+    ]
+  },
   "contact": "Contact Us",
-
   "hero": {
     "title": {
       "part1": "A technology that",
       "part2": "Protects"
     },
-    "words": ["Businesses", "Lives", "Data", "Information"],
+    "words": [
+      "Businesses",
+      "Lives",
+      "Data",
+      "Information"
+    ],
     "contact": "Contact Us",
     "prevImage": "Previous image",
     "nextImage": "Next image"
   },
-
   "servicesGrid": {
     "title": "Over 30 years of excellence in Fire Engineering",
     "imageAlt": "SMH Extinguishers",
@@ -32,7 +106,6 @@
     ],
     "button": "Learn more"
   },
-
   "metrics": {
     "title": "Numbers That Speak for Themselves",
     "subtitle": "Our success story is measured by the results we deliver and the trust our clients place in us.",
@@ -48,29 +121,71 @@
       "button": "Learn more"
     }
   },
-
   "projectShowcase": {
     "title": "Markets Served",
     "subtitle": "SMH SYSTEMS specializes in Fire Protection for Mission-Critical Environments and Special Risks, serving multiple sectors.",
     "markets": [
-      { "name": "Data Centers", "description": "High-performance fire detection and suppression systems for the safety of terminals, hangars, and airport infrastructures.", "image": "https://assets.ibm.com/is/image/ibm/22_27_p_gorodenkoff-549:2x1?dpr=on%2C1.25&wid=960&hei=480" },
-      { "name": "Commercial Centers", "description": "Robust solutions for protecting large commercial complexes, ensuring the safety of people and assets.", "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Westminster_Arcade.jpg" },
-      { "name": "Civil Construction", "description": "Fire protection for new constructions and renovations, focusing on systems that integrate with modern architecture.", "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Factory_of_National_Cement_Share_Company.jpg" },
-      { "name": "Technical Rooms (CPDs)", "description": "Fire prevention and suppression in critical environments with sensitive equipment, using clean agents that do not damage assets.", "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Floridaserversfront1.jpg" },
-      { "name": "Airports", "description": "Advanced fire protection systems to ensure operational continuity in hyperscale and colocation data centers.", "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/20140308_Airport_ground_operations.jpg" },
-      { "name": "Industries", "description": "Customized solutions for industrial environments with specific risks, protecting production lines and machinery.", "image": "https://upload.wikimedia.org/wikipedia/commons/8/85/Kunda_tsemenditehas.jpg" },
-      { "name": "Logistics", "description": "Protection for distribution centers, warehouses, and storage facilities with systems that ensure merchandise safety.", "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Automatisches_Kleinteilelager.jpg" },
-      { "name": "Mining", "description": "Cutting-edge technology for protecting heavy equipment and infrastructure in mining operations under challenging conditions.", "image": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kalgoorlie_open_cast_mine.jpg" },
-      { "name": "Ports", "description": "Fire safety for port facilities, cargo terminals, and large-scale storage areas.", "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Porto_de_Lisboa_%282%29.jpg" },
-      { "name": "Shopping Centers", "description": "Comprehensive systems for protecting shopping malls, ensuring the safety of visitors and commercial complexes.", "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Mall_of_Tripla_sis%C3%A4kuvia_2.jpg" },
-      { "name": "Telecommunications", "description": "Critical solutions for telecom centers, protecting electronic equipment and ensuring service continuity.", "image": "https://blog.tactium.com.br/wp-content/themes/softium/script/timthumb.php?src=https://blog.tactium.com.br/wp-content/uploads/2016/02/como-melhorar-performance-do-seu-telemarketing-ativo.jpg&w=930&h=480&zc=1&q=100" }
+      {
+        "name": "Data Centers",
+        "description": "High-performance fire detection and suppression systems for the safety of terminals, hangars, and airport infrastructures.",
+        "image": "https://assets.ibm.com/is/image/ibm/22_27_p_gorodenkoff-549:2x1?dpr=on%2C1.25&wid=960&hei=480"
+      },
+      {
+        "name": "Commercial Centers",
+        "description": "Robust solutions for protecting large commercial complexes, ensuring the safety of people and assets.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Westminster_Arcade.jpg"
+      },
+      {
+        "name": "Civil Construction",
+        "description": "Fire protection for new constructions and renovations, focusing on systems that integrate with modern architecture.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Factory_of_National_Cement_Share_Company.jpg"
+      },
+      {
+        "name": "Technical Rooms (CPDs)",
+        "description": "Fire prevention and suppression in critical environments with sensitive equipment, using clean agents that do not damage assets.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Floridaserversfront1.jpg"
+      },
+      {
+        "name": "Airports",
+        "description": "Advanced fire protection systems to ensure operational continuity in hyperscale and colocation data centers.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/20140308_Airport_ground_operations.jpg"
+      },
+      {
+        "name": "Industries",
+        "description": "Customized solutions for industrial environments with specific risks, protecting production lines and machinery.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/8/85/Kunda_tsemenditehas.jpg"
+      },
+      {
+        "name": "Logistics",
+        "description": "Protection for distribution centers, warehouses, and storage facilities with systems that ensure merchandise safety.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Automatisches_Kleinteilelager.jpg"
+      },
+      {
+        "name": "Mining",
+        "description": "Cutting-edge technology for protecting heavy equipment and infrastructure in mining operations under challenging conditions.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kalgoorlie_open_cast_mine.jpg"
+      },
+      {
+        "name": "Ports",
+        "description": "Fire safety for port facilities, cargo terminals, and large-scale storage areas.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Porto_de_Lisboa_%282%29.jpg"
+      },
+      {
+        "name": "Shopping Centers",
+        "description": "Comprehensive systems for protecting shopping malls, ensuring the safety of visitors and commercial complexes.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Mall_of_Tripla_sis%C3%A4kuvia_2.jpg"
+      },
+      {
+        "name": "Telecommunications",
+        "description": "Critical solutions for telecom centers, protecting electronic equipment and ensuring service continuity.",
+        "image": "https://blog.tactium.com.br/wp-content/themes/softium/script/timthumb.php?src=https://blog.tactium.com.br/wp-content/uploads/2016/02/como-melhorar-performance-do-seu-telemarketing-ativo.jpg&w=930&h=480&zc=1&q=100"
+      }
     ],
     "notFound": "Didn't find your sector? Talk to us about a customized solution.",
     "button": "Contact Us",
     "prev": "Previous market",
     "next": "Next market"
   },
-
   "ctaSection": {
     "heading": "Connect with specialists who understand your business.",
     "button": "Chat with a Specialist",
@@ -89,7 +204,6 @@
       }
     }
   },
-
   "sobreNos": {
     "title": "About Us",
     "intro": "Welcome to <span class='font-semibold text-[#ff4747]'>SMH</span> — innovation, safety, and quality in technological solutions that transform the future.",
@@ -136,7 +250,6 @@
       }
     ]
   },
-
   "systems": {
     "title": "Fire Systems",
     "subtitle": "Explore our systems designed to ensure safety, efficiency, and reliability in fire prevention and protection.",
@@ -154,6 +267,16 @@
         "Conventional and addressable fire detection system",
         "Aspirating fire alarm system",
         "Alarm monitoring and supervision system"
+      ]
+    },
+    "gaseousAgents": {
+      "title": "Fire Suppression with Gaseous Agents",
+      "description": "Clean and effective solutions for sensitive areas and electronic equipment.",
+      "details": "They allow rapid extinguishing without damaging electronic equipment, ideal for server rooms and laboratories.",
+      "items": [
+        "Clean agent fire suppression system (FM200, NOVEC 1230, CO₂)",
+        "Automatic agent detection and release system",
+        "Pressurization and controlled discharge system"
       ]
     },
     "gaseousAgents": {
@@ -207,7 +330,6 @@
       ]
     }
   },
-
   "servicesPage": {
     "mainTitle": "Explore Our Services",
     "mainSubtitle": "Discover how SMH Systems can boost your operation with high-level technology.",
@@ -223,41 +345,70 @@
       {
         "title": "Preventive Maintenance",
         "description": "We perform periodic inspections and technical adjustments to prevent failures and keep systems always operational.",
-        "features": ["One-time", "Periodic", "Performance Optimization"]
+        "features": [
+          "One-time",
+          "Periodic",
+          "Performance Optimization"
+        ]
       },
       {
         "title": "Corrective Maintenance",
         "description": "We act on the immediate identification and repair of failures, quickly restoring system functionality.",
-        "features": ["Infrastructure", "Equipment", "Labor", "24/7 Support"]
+        "features": [
+          "Infrastructure",
+          "Equipment",
+          "Labor",
+          "24/7 Support"
+        ]
       },
       {
         "title": "System Adaptation",
         "description": "We adapt and update existing systems to meet technical standards and specific client needs.",
-        "features": ["Infrastructure", "Equipment", "Labor", "Legal Compliance"]
+        "features": [
+          "Infrastructure",
+          "Equipment",
+          "Labor",
+          "Legal Compliance"
+        ]
       },
       {
         "title": "Leak Test",
         "description": "We check the sealing of pipes and connections to ensure there are no leaks in pressurized systems.",
-        "features": ["Leak Inspection", "Detailed Reports", "Operational Safety"]
+        "features": [
+          "Leak Inspection",
+          "Detailed Reports",
+          "Operational Safety"
+        ]
       },
       {
         "title": "Ultrasound Test",
         "description": "We use ultrasonic technology to detect internal flaws in materials and components without causing damage.",
-        "features": ["Non-Destructive Analysis", "Crack Detection", "Integrity Assessment"]
+        "features": [
+          "Non-Destructive Analysis",
+          "Crack Detection",
+          "Integrity Assessment"
+        ]
       },
       {
         "title": "Hydrostatic Test",
         "description": "We conduct tests with pressurized water to assess the strength and integrity of fire combat networks.",
-        "features": ["Strength Assessment", "Fire Networks", "Technical Certification"]
+        "features": [
+          "Strength Assessment",
+          "Fire Networks",
+          "Technical Certification"
+        ]
       },
       {
         "title": "Siren Test",
         "description": "We inspect and test sound alarm systems to ensure their effectiveness in emergency situations.",
-        "features": ["Alarm Verification", "Emergency Simulation", "Reliability"]
+        "features": [
+          "Alarm Verification",
+          "Emergency Simulation",
+          "Reliability"
+        ]
       }
     ]
   },
-
   "footer": {
     "logoAlt": "SMH Systems Logo",
     "companyName": "SMH Systems",
@@ -273,7 +424,6 @@
     "privacy": "We respect your privacy. No spam.",
     "rights": "All rights reserved."
   },
-
   "newsletter": {
     "thankYou": "Thank you for subscribing!"
   }
