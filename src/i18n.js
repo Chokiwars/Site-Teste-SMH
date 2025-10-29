@@ -16,8 +16,8 @@ i18n
     fallbackLng: 'pt',
     supportedLngs: ['en', 'pt'],
     detection: {
-      order: ['localStorage', 'navigator'], // 👈 prioridade de detecção
-      caches: ['localStorage'], // 👈 salva o idioma no localStorage
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
     },
     interpolation: { escapeValue: false },
   });
