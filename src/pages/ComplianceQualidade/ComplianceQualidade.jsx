@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next"; // 1. IMPORTAR (Corrigido)
+import { useTranslation } from "react-i18next";
 import {
   FileText,
   ShieldAlert,
@@ -9,7 +9,7 @@ import {
   ShieldCheck,
   CheckCircle,
 } from "lucide-react";
-
+ 
 // --- Animações (Sem Alterações) ---
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -42,7 +42,7 @@ const slideRight = {
     transition: { duration: 0.7, ease: [0.25, 1, 0.5, 1] },
   },
 };
-
+ 
 // --- DADOS ESTÁTICOS (NÃO TRADUZÍVEIS) ---
 // 2. SEPARAR DADOS-BASE (links e nomes de ícones)
 const policiesBaseData = [
@@ -51,7 +51,7 @@ const policiesBaseData = [
   { href: "/docs/politica-antissuborno.pdf" },
   { href: "/docs/politica-de-compliance.pdf" },
 ];
-
+ 
 const certificationsBaseData = [
   {
     icon: "Award", // Nome do ícone como string
@@ -66,36 +66,36 @@ const certificationsBaseData = [
     href: "/certificados/iso-9001.pdf",
   },
 ];
-
+ 
 // 3. MAPA DE ÍCONES (para renderização dinâmica)
 const iconMap = {
   Award,
   ShieldCheck,
   CheckCircle,
 };
-
+ 
 // --- Página ---
 const ComplianceQualidade = () => {
   // 4. INICIALIZAR O TRADUTOR (Corrigido)
   const { t } = useTranslation();
-
+ 
   // 5. BUSCAR TEXTOS DO JSON E COMBINAR COM DADOS-BASE
   const policiesText = t("compliance.policies", { returnObjects: true }) || [];
   const policies = policiesBaseData.map((base, index) => ({
     ...base,
     ...(policiesText[index] || {}),
   }));
-
+ 
   const certificationsText =
     t("compliance.certifications", { returnObjects: true }) || [];
   const certifications = certificationsBaseData.map((base, index) => ({
     ...base,
     ...(certificationsText[index] || {}),
   }));
-
+ 
   // Pega todo o conteúdo estático da página
   const content = t("compliance.pageContent", { returnObjects: true });
-
+ 
   // Fallback caso o JSON ainda não tenha carregado
   if (!content) {
     return (
@@ -105,13 +105,13 @@ const ComplianceQualidade = () => {
       </div>
     );
   }
-
+ 
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen w-full overflow-hidden pt-28 pb-20 font-sans">
       {/* Fundo animado */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1e2a78] via-[#0b1e36] to-[#09162a] animate-gradientMove opacity-95"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.1),_transparent_70%)] animate-pulseSlow"></div>
-
+ 
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -140,7 +140,7 @@ const ComplianceQualidade = () => {
             {content.hero.subtitle}
           </motion.p>
         </motion.section>
-
+ 
         {/* Introdução */}
         <motion.section
           className="py-16 md:py-24"
@@ -165,7 +165,7 @@ const ComplianceQualidade = () => {
             <motion.p variants={item}>{content.introduction.p2}</motion.p>
           </div>
         </motion.section>
-
+ 
         {/* Códigos e Políticas */}
         <motion.section
           className="py-16 md:py-24"
@@ -181,7 +181,7 @@ const ComplianceQualidade = () => {
             {/* 6. SUBSTITUIR TEXTO */}
             {content.policiesSection.title}
           </motion.h2>
-
+ 
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
             variants={stagger}
@@ -216,7 +216,7 @@ const ComplianceQualidade = () => {
             ))}
           </motion.div>
         </motion.section>
-
+ 
         {/* Canal de Denúncia */}
         <motion.section
           className="py-16 md:py-24"
@@ -239,7 +239,7 @@ const ComplianceQualidade = () => {
                 {content.whistleblowerChannel.followUp}
               </p>
             </motion.div>
-
+ 
             <motion.div
               className="flex justify-center lg:justify-end"
               variants={slideRight}
@@ -267,7 +267,7 @@ const ComplianceQualidade = () => {
             </motion.div>
           </div>
         </motion.section>
-
+ 
         {/* Certificações ISO */}
         <motion.section
           className="py-16 md:py-24"
@@ -293,7 +293,7 @@ const ComplianceQualidade = () => {
               {content.certificationsSection.description}
             </p>
           </motion.div>
-
+ 
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
             variants={stagger}
@@ -334,14 +334,14 @@ const ComplianceQualidade = () => {
                       <ExternalLink className="ml-2 h-4 w-4" />
                     </a>
                   </div>
-
+ 
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#ff4747]/10 to-transparent pointer-events-none"></div>
                 </motion.div>
               );
             })}
           </motion.div>
         </motion.section>
-
+ 
         {/* Rodapé */}
         <motion.footer
           className="mt-20 text-center text-sm text-gray-400 border-t border-white/10 pt-8"
@@ -354,7 +354,7 @@ const ComplianceQualidade = () => {
           )}
         </motion.footer>
       </motion.main>
-
+ 
       {/* Animações CSS (Sem Alterações) */}
       <style>{`
         @keyframes gradientMove {
@@ -377,6 +377,7 @@ const ComplianceQualidade = () => {
     </div>
   );
 };
-
+ 
 export default ComplianceQualidade;
-
+ 
+ 
