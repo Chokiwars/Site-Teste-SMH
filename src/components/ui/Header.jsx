@@ -40,6 +40,7 @@ const Header = ({ className = '' }) => {
     { key: 'services', path: '/services', icon: 'Settings' },
     { key: 'clients', path: '/clientes', icon: 'Briefcase' },
     { key: 'compliance', path: '/compliance-qualidade', icon: 'ShieldCheck' },
+    { key: 'Marketplace', path: '/marketplace', icon: 'ShoppingCart' },
   ];
  
   // Links sociais
@@ -164,7 +165,7 @@ const Header = ({ className = '' }) => {
  
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
-            {navigationItems.slice(0, 6).map((item) => (
+            {navigationItems.slice(0, 7).map((item) => (
               <button
                 key={item.key || item.name}
                 onClick={() => handleNavigation(item.path)}
