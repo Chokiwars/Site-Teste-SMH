@@ -1,15 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Icon from '../AppIcon';
 import Button from './Button';
 import Logo from '@/assets/images/smh_sistemas_logo.jpg';
+<<<<<<< .merge_file_j5R82X
  
 // Bandeiras externas
 const BRFlag = 'https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg';
 const UKFlag = 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg';
  
 // Cores primárias
+=======
+
+const BRFlag = 'https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg';
+const UKFlag = 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg';
+
+>>>>>>> .merge_file_FbmvfE
 const primaryColor = {
   text: 'text-[#003366]',
   textHover: 'hover:text-[#003366]',
@@ -24,15 +31,27 @@ const Header = ({ className = '' }) => {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language || 'pt');
+<<<<<<< .merge_file_j5R82X
  
   // Efeito de scroll para adicionar sombra ao header
+=======
+
+  useEffect(() => setLanguage(i18n.language), [i18n.language]);
+
+>>>>>>> .merge_file_FbmvfE
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+<<<<<<< .merge_file_j5R82X
  
   // Itens de navegação
+=======
+
+  useEffect(() => setIsMobileMenuOpen(false), [location.pathname]);
+
+>>>>>>> .merge_file_FbmvfE
   const navigationItems = [
     { key: 'home', path: '/homepage', icon: 'Home' },
     { key: 'about', path: '/sobre-nos', icon: 'Users' },
@@ -42,17 +61,25 @@ const Header = ({ className = '' }) => {
     { key: 'compliance', path: '/compliance-qualidade', icon: 'ShieldCheck' },
     // { key: 'Marketplace', path: '/marketplace', icon: 'ShoppingCart' },
   ];
+<<<<<<< .merge_file_j5R82X
  
   // Links sociais
+=======
+
+>>>>>>> .merge_file_FbmvfE
   const socialLinks = [
     { name: 'Instagram', href: 'https://www.instagram.com/smhsistemas/', icon: 'Instagram' },
     { name: 'Linkedin', href: 'https://br.linkedin.com/company/smhsistemas', icon: 'Linkedin' },
     { name: 'Facebook', href: 'https://www.facebook.com/smhsistemas/', icon: 'Facebook' },
   ];
+<<<<<<< .merge_file_j5R82X
  
   // Função de navegação
+=======
+
+>>>>>>> .merge_file_FbmvfE
   const handleNavigation = (path) => {
-    if (path?.startsWith('#')) {
+    if (path.startsWith('#')) {
       const element = document.querySelector(path);
       if (element) element.scrollIntoView({ behavior: 'smooth' });
     } else {
@@ -60,6 +87,7 @@ const Header = ({ className = '' }) => {
     }
     setIsMobileMenuOpen(false);
   };
+<<<<<<< .merge_file_j5R82X
  
   // Verifica se o path está ativo
   const isActivePath = (path) => {
@@ -68,76 +96,61 @@ const Header = ({ className = '' }) => {
   };
  
   // Alterar idioma
+=======
+
+  const isActivePath = (path) => location.pathname === path;
+
+>>>>>>> .merge_file_FbmvfE
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
     setLanguage(lang);
+    setIsMobileMenuOpen(false);
   };
  
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'shadow-lg' : ''
-      } ${className}`}
-    >
-      {/* Top Contact */}
+    <div className={`fixed top-0 left-0 right-0 z-50 ${className} ${isScrolled ? 'shadow-lg' : ''}`}>
+      {/* Top Bar */}
       <div className="bg-[#003366] text-white py-1.5 text-sm font-medium">
         <div className="container mx-auto flex justify-between items-center px-4">
           <div className="hidden md:flex items-center gap-6">
-            <a
-              href="tel:+551150605777"
-              className="flex items-center gap-1.5 hover:text-gray-300 transition-colors"
-            >
+            <a href="tel:+551150605777" className="flex items-center gap-1.5 hover:text-gray-300 transition-colors">
               <Icon name="Phone" size={16} />
-              <span>+55 11 5060-5777</span>
+              +55 11 5060-5777
             </a>
-            <a
-              href="mailto:smh@smh.com.br"
-              className="flex items-center gap-1.5 hover:text-gray-300 transition-colors"
-            >
+            <a href="mailto:smh@smh.com.br" className="flex items-center gap-1.5 hover:text-gray-300 transition-colors">
               <Icon name="Mail" size={16} />
-              <span>smh@smh.com.br</span>
+              smh@smh.com.br
             </a>
           </div>
  
           <div className="hidden lg:flex items-center space-x-4 ml-auto">
-            {/* Social Icons */}
             <div className="flex items-center space-x-3">
               {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-gray-300 transform hover:scale-110 transition-all duration-300"
-                  aria-label={social.name}
-                >
+                <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">
                   <Icon name={social.icon} size={20} />
                 </a>
               ))}
             </div>
+<<<<<<< .merge_file_j5R82X
  
             {/* Linha separadora */}
             <div className="w-px h-5 bg-white/30"></div>
  
             {/* Language Buttons */}
+=======
+
+            <div className="w-px h-5 bg-white/30"></div>
+
+>>>>>>> .merge_file_FbmvfE
             <div className="flex items-center space-x-2">
-              <button
-                onClick={() => changeLanguage('pt')}
-                className={`p-1 rounded-full border ${
-                  language === 'pt' ? 'border-white' : 'border-transparent'
-                } hover:border-white transition`}
-              >
-                <img src={BRFlag} alt="Português" className="w-5 h-5 object-cover rounded-full" />
+              <button onClick={() => changeLanguage('pt')} className={`p-1 rounded-full border ${language==='pt'?'border-white':'border-transparent'}`}>
+                <img src={BRFlag} alt="Português" className="w-5 h-5 rounded-full"/>
               </button>
-              <button
-                onClick={() => changeLanguage('en')}
-                className={`p-1 rounded-full border ${
-                  language === 'en' ? 'border-white' : 'border-transparent'
-                } hover:border-white transition`}
-              >
-                <img src={UKFlag} alt="English" className="w-5 h-5 object-cover rounded-full" />
+              <button onClick={() => changeLanguage('en')} className={`p-1 rounded-full border ${language==='en'?'border-white':'border-transparent'}`}>
+                <img src={UKFlag} alt="English" className="w-5 h-5 rounded-full"/>
               </button>
             </div>
+<<<<<<< .merge_file_j5R82X
  
             {/* Linha separadora */}
             <div className="w-px h-5 bg-white/30"></div>
@@ -147,21 +160,30 @@ const Header = ({ className = '' }) => {
               onClick={() => navigate('/contato')}
               className="bg-white/10 text-white border border-white/30 hover:bg-white/20 px-4 py-1.5 rounded-lg text-sm transition-all duration-300 transform hover:scale-105"
             >
+=======
+
+            <div className="w-px h-5 bg-white/30"></div>
+
+            <Button onClick={()=>navigate('/contato')} className="bg-white/10 text-white border border-white/30 hover:bg-white/20 px-4 py-1.5 rounded-lg text-sm">
+>>>>>>> .merge_file_FbmvfE
               {t('contact')}
             </Button>
           </div>
         </div>
       </div>
+<<<<<<< .merge_file_j5R82X
  
       {/* Main Header */}
+=======
+
+      {/* Header */}
+>>>>>>> .merge_file_FbmvfE
       <header className="bg-white border-b border-gray-200 w-full shadow-sm">
         <div className="flex items-center justify-between h-18 px-6 lg:px-8">
-          <a
-            href="/homepage"
-            className="relative w-24 h-16 sm:w-32 sm:h-16 flex-shrink-0 transition-transform duration-300 transform hover:scale-105"
-          >
-            <img src={Logo} alt="Logo SMH Sistemas" className="w-full h-full object-contain rounded-lg" />
+          <a href="/homepage" className="relative w-24 h-16 sm:w-32 sm:h-16 flex-shrink-0">
+            <img src={Logo} alt="Logo SMH Sistemas" className="w-full h-full object-contain rounded-lg"/>
           </a>
+<<<<<<< .merge_file_j5R82X
  
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
@@ -192,68 +214,69 @@ const Header = ({ className = '' }) => {
               size={24}
               className={`transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-90' : 'rotate-0'}`}
             />
+=======
+
+          {/* Desktop Menu */}
+          <nav className="hidden lg:flex items-center space-x-2">
+            {navigationItems.map((item)=>(
+              <button key={item.key} onClick={()=>handleNavigation(item.path)} className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 ${isActivePath(item.path)?`${primaryColor.text} ${primaryColor.bgActive} font-semibold`:'text-slate-600 hover:text-red-600'}`}>
+                <Icon name={item.icon} size={16}/>
+                <span>{item.key==='compliance'?t('nav_compliance'):t(item.key)}</span>
+              </button>
+            ))}
+          </nav>
+
+          {/* Mobile Button */}
+          <button onClick={()=>setIsMobileMenuOpen(!isMobileMenuOpen)} className="lg:hidden p-2 rounded-md text-slate-700 hover:text-blue-600 hover:bg-gray-100">
+            <Icon name={isMobileMenuOpen?'X':'Menu'} size={24}/>
+>>>>>>> .merge_file_FbmvfE
           </button>
         </div>
  
         {/* Mobile Menu */}
-        <div
-          className={`lg:hidden transition-all duration-300 ease-out ${
-            isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-          }`}
-        >
-          <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
-            <nav className="space-y-2">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.key || item.name}
-                  onClick={() => handleNavigation(item.path)}
-                  className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-300 ${
-                    isActivePath(item.path)
-                      ? `${primaryColor.text} ${primaryColor.bgActive} font-semibold`
-                      : `text-slate-700 hover:text-red-600 hover:bg-gray-200`
-                  }`}
-                >
-                  <Icon name={item.icon} size={20} />
-                  <span className="font-medium">{item.key === 'compliance' ? t('nav_compliance') : t(item.key)}</span>
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-gray-50 border-t border-gray-200 shadow-md">
+            <nav className="flex flex-col px-6 py-4 space-y-2">
+              {navigationItems.map((item)=>(
+                <button key={item.key} onClick={()=>handleNavigation(item.path)} className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg text-left ${isActivePath(item.path)?`${primaryColor.text} ${primaryColor.bgActive}`:'text-slate-700 hover:text-red-600 hover:bg-gray-200'}`}>
+                  <Icon name={item.icon} size={20}/>
+                  <span>{item.key==='compliance'?t('nav_compliance'):t(item.key)}</span>
                 </button>
               ))}
             </nav>
+<<<<<<< .merge_file_j5R82X
  
             {/* Mobile Social + Language */}
             <div className="flex items-center justify-center space-x-6 pt-5 mt-4 border-t border-gray-200">
+=======
+
+            {/* Social + Language */}
+            <div className="flex flex-col sm:flex-row items-center justify-between px-6 py-4 border-t border-gray-200 space-y-3 sm:space-y-0 sm:space-x-6">
+>>>>>>> .merge_file_FbmvfE
               <div className="flex items-center space-x-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-black transform hover:scale-110 transition-all duration-300"
-                  >
-                    <Icon name={social.icon} size={24} />
+                {socialLinks.map((social)=>(
+                  <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black">
+                    <Icon name={social.icon} size={24}/>
                   </a>
                 ))}
               </div>
+<<<<<<< .merge_file_j5R82X
  
               <div className="w-px h-5 bg-gray-400"></div>
  
+=======
+>>>>>>> .merge_file_FbmvfE
               <div className="flex items-center space-x-2">
-                <button
-                  onClick={() => changeLanguage('pt')}
-                  className={`p-1 rounded-full border ${language === 'pt' ? 'border-gray-700' : 'border-transparent'} hover:border-gray-700 transition`}
-                >
-                  <img src={BRFlag} alt="Português" className="w-5 h-5 object-cover rounded-full" />
+                <button onClick={()=>changeLanguage('pt')} className={`p-1 rounded-full border ${language==='pt'?'border-gray-700':'border-transparent'}`}>
+                  <img src={BRFlag} alt="Português" className="w-5 h-5 rounded-full"/>
                 </button>
-                <button
-                  onClick={() => changeLanguage('en')}
-                  className={`p-1 rounded-full border ${language === 'en' ? 'border-gray-700' : 'border-transparent'} hover:border-gray-700 transition`}
-                >
-                  <img src={UKFlag} alt="English" className="w-5 h-5 object-cover rounded-full" />
+                <button onClick={()=>changeLanguage('en')} className={`p-1 rounded-full border ${language==='en'?'border-gray-700':'border-transparent'}`}>
+                  <img src={UKFlag} alt="English" className="w-5 h-5 rounded-full"/>
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </header>
     </div>
   );
