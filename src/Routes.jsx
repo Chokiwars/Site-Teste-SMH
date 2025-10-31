@@ -38,6 +38,7 @@ const Routes = () => {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
+      
       </ErrorBoundary>
     </BrowserRouter>
   );
