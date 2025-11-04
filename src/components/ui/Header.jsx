@@ -40,6 +40,7 @@ const Header = ({ className = '' }) => {
     { key: 'services', path: '/services', icon: 'Settings' },
     { key: 'clients', path: '/clientes', icon: 'Briefcase' },
     { key: 'compliance', path: '/compliance-qualidade', icon: 'ShieldCheck' },
+{ key: 'contact', path: '/contato', icon: 'Phone' },
   ];
 
   const socialLinks = [
