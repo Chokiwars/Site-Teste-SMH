@@ -4,6 +4,24 @@
   "solutions": "Solutions",
   "services": "Services",
   "clients": "Clients",
+  "clientsPage": {
+    "title": "Partner Clients",
+    "subtitle": "Great brands that trust SMH Sistemas",
+    "carousel": {
+      "prev": "Previous",
+      "next": "Next",
+      "slide": "Slide {{number}}"
+    },
+    "categories": {
+      "financial": "Financial",
+      "technology": "Technology",
+      "energy": "Energy",
+      "engineering": "Engineering",
+      "others": "Others",
+      "health": "Health",
+      "telecom": "Telecommunications"
+    }
+  },
   "form": "Form",
   "register": "Register",
   "login": "Login",
@@ -23,7 +41,6 @@
         "title": "Codes and Policies",
         "viewButtonText": "View"
       },
-
       "whistleblowerChannel": {
         "title": "Whistleblower Channel",
         "description": "An essential tool to reinforce our compliance policy. We guarantee anonymity and protection for channel users.",
@@ -269,16 +286,6 @@
         "Conventional and addressable fire detection system",
         "Aspirating fire alarm system",
         "Alarm monitoring and supervision system"
-      ]
-    },
-    "gaseousAgents": {
-      "title": "Fire Suppression with Gaseous Agents",
-      "description": "Clean and effective solutions for sensitive areas and electronic equipment.",
-      "details": "They allow rapid extinguishing without damaging electronic equipment, ideal for server rooms and laboratories.",
-      "items": [
-        "Clean agent fire suppression system (FM200, NOVEC 1230, CO₂)",
-        "Automatic agent detection and release system",
-        "Pressurization and controlled discharge system"
       ]
     },
     "gaseousAgents": {
