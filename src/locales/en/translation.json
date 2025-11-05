@@ -4,6 +4,24 @@
   "solutions": "Solutions",
   "services": "Services",
   "clients": "Clients",
+  "clientsPage": {
+    "title": "Partner Clients",
+    "subtitle": "Great brands that trust SMH Sistemas",
+    "carousel": {
+      "prev": "Previous",
+      "next": "Next",
+      "slide": "Slide {{number}}"
+    },
+    "categories": {
+      "financial": "Financial",
+      "technology": "Technology",
+      "energy": "Energy",
+      "engineering": "Engineering",
+      "others": "Others",
+      "health": "Health",
+      "telecom": "Telecommunications"
+    }
+  },
   "form": "Form",
   "register": "Register",
   "login": "Login",
@@ -23,7 +41,6 @@
         "title": "Codes and Policies",
         "viewButtonText": "View"
       },
-
       "whistleblowerChannel": {
         "title": "Whistleblower Channel",
         "description": "An essential tool to reinforce our compliance policy. We guarantee anonymity and protection for channel users.",
@@ -81,6 +98,42 @@
     ]
   },
   "contact": "Contact Us",
+  "contato": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Get in touch with us for questions, suggestions, or support."
+    },
+    "info": {
+      "email": {
+        "title": "Email"
+      },
+      "phone": {
+        "title": "Phone"
+      },
+      "address": {
+        "title": "Address"
+      }
+    },
+    "map": {
+      "title": "Location"
+    },
+    "form": {
+      "title": "Send your message",
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Your message"
+      },
+      "buttonText": "Send"
+    }
+  },
   "hero": {
     "title": {
       "part1": "A technology that",
@@ -245,7 +298,7 @@
       {
         "id": "contato",
         "titulo": "Get in Touch",
-        "texto": "Want to know more about us or have questions? We would be happy to talk to you! 📧 <span class='font-semibold text-[#ff4747]'>contact@smh.com.br</span>",
+        "texto": "Want to know more about us or have questions? We would be happy to talk to you! 📧 <span class='font-semibold text-[#ff4747]'>smh@smh.com.br</span>",
         "reverso": false,
         "imagem": "src/assets/images/contato.png"
       }
@@ -269,16 +322,6 @@
         "Conventional and addressable fire detection system",
         "Aspirating fire alarm system",
         "Alarm monitoring and supervision system"
-      ]
-    },
-    "gaseousAgents": {
-      "title": "Fire Suppression with Gaseous Agents",
-      "description": "Clean and effective solutions for sensitive areas and electronic equipment.",
-      "details": "They allow rapid extinguishing without damaging electronic equipment, ideal for server rooms and laboratories.",
-      "items": [
-        "Clean agent fire suppression system (FM200, NOVEC 1230, CO₂)",
-        "Automatic agent detection and release system",
-        "Pressurization and controlled discharge system"
       ]
     },
     "gaseousAgents": {

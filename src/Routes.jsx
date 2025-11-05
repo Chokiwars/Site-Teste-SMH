@@ -15,6 +15,7 @@ import Clientes from "./pages/NossosClientes/NossosClientes";
 import CadastroClientes from "pages/CadastroClientes/CadastroClientes";
 import Marketplace from "pages/Marketplace/Marketplace";
 import ComplianceQualidade from "pages/ComplianceQualidade/ComplianceQualidade";
+import Contato from './pages/Contato/Contato';
 
 const Routes = () => {
   return (
@@ -34,6 +35,7 @@ const Routes = () => {
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/login-clientes" element={<LoginClientes />} />
         <Route path="/cadastro-clientes" element={<CadastroClientes />} />
+        <Route path="/contato" element={<Contato />} />
         <Route path="/compliance-qualidade" element={<ComplianceQualidade />} />
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="*" element={<NotFound />} />

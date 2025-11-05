@@ -4,6 +4,24 @@
   "solutions": "Soluções",
   "services": "Serviços",
   "clients": "Clientes",
+  "clientsPage": {
+    "title": "Clientes Parceiros",
+    "subtitle": "Grandes marcas que confiam na SMH Sistemas",
+    "carousel": {
+      "prev": "Anterior",
+      "next": "Próximo",
+      "slide": "Slide {{number}}"
+    },
+    "categories": {
+      "financial": "Financeiro",
+      "technology": "Tecnologia",
+      "energy": "Energia",
+      "engineering": "Engenharia",
+      "others": "Outros",
+      "health": "Saúde",
+      "telecom": "Telecomunicações"
+    }
+  },
   "form": "Formulário",
   "register": "Registar",
   "login": "Login",
@@ -23,7 +41,6 @@
         "title": "Códigos e Políticas",
         "viewButtonText": "Visualizar"
       },
-      
       "whistleblowerChannel": {
         "title": "Canal de Denúncia",
         "description": "Ferramenta essencial para reforçar nossa política de compliance. Garantimos anonimato e proteção aos usuários do canal.",
@@ -81,6 +98,42 @@
     ]
   },
   "contact": "Contato",
+  "contato": {
+    "hero": {
+      "title": "Fale Conosco",
+      "subtitle": "Entre em contato conosco para dúvidas, sugestões ou suporte."
+    },
+    "info": {
+      "email": {
+        "title": "Email"
+      },
+      "phone": {
+        "title": "Telefone"
+      },
+      "address": {
+        "title": "Endereço"
+      }
+    },
+    "map": {
+      "title": "Localização"
+    },
+    "form": {
+      "title": "Envie sua mensagem",
+      "name": {
+        "label": "Nome",
+        "placeholder": "Seu nome"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "seu@email.com"
+      },
+      "message": {
+        "label": "Mensagem",
+        "placeholder": "Sua mensagem"
+      },
+      "buttonText": "Enviar"
+    }
+  },
   "hero": {
     "title": {
       "part1": "Uma tecnologia que",
@@ -420,4 +473,3 @@
     "thankYou": "Obrigado por se inscrever!"
   }
 }
-
