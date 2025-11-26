@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { getImagePath } from '@/utils/imagePath';
 
 const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } };
 const fadeIn = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 1 } } };
@@ -60,7 +61,7 @@ function SobreNos() {
             >
               <div className={`flex flex-col md:flex-row ${secao.reverso ? "md:flex-row-reverse" : ""} items-stretch h-auto md:h-[400px]`}>
                 <motion.img
-                  src={secao.imagem}
+                  src={getImagePath(secao.imagem)}
                   alt={secao.titulo}
                   className="w-full md:w-1/2 h-64 sm:h-80 md:h-full object-cover"
                   initial={{ opacity: 0 }}

@@ -1,21 +1,21 @@
 import React from "react";
 import { BrowserRouter, Routes as RouterRoutes, Route } from "react-router-dom";
-import ScrollToTop from "components/ScrollToTop";
-import ErrorBoundary from "components/ErrorBoundary";
-import NotFound from "pages/NotFound";
-import ProposalEngine from './pages/proposal-engine';
-import Header from "components/ui/Header";
-import Homepage from './pages/homepage/PaginaHome';
-import SobreNos from "./pages/SobreNos/SobreNos";
-import FormularioPedidosClientes from "pages/FormularioPedidosClientes/FormularioPedidosClientes";
-import ServicesPage from './pages/Servicos/Servicos';
-import Solucoes from "pages/Solucoes/Solucoes";
-import LoginClientes from './pages/LoginClientes/LoginClientes';
-import Clientes from "./pages/NossosClientes/NossosClientes";
-import CadastroClientes from "pages/CadastroClientes/CadastroClientes";
-import Marketplace from "pages/Marketplace/Marketplace";
-import ComplianceQualidade from "pages/ComplianceQualidade/ComplianceQualidade";
-import Contato from './pages/Contato/Contato';
+import ScrollToTop from "@/components/ScrollToTop";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import NotFound from "@/pages/NotFound";
+import ProposalEngine from '@/pages/proposal-engine';
+import Header from "@/components/ui/Header";
+import Homepage from '@/pages/homepage/PaginaHome';
+import SobreNos from "@/pages/SobreNos/SobreNos";
+import FormularioPedidosClientes from "@/pages/FormularioPedidosClientes/FormularioPedidosClientes";
+import ServicesPage from '@/pages/Servicos/Servicos';
+import Solucoes from "@/pages/Solucoes/Solucoes";
+import LoginClientes from '@/pages/LoginClientes/LoginClientes';
+import Clientes from "@/pages/NossosClientes/NossosClientes";
+import CadastroClientes from "@/pages/CadastroClientes/CadastroClientes";
+import Marketplace from "@/pages/Marketplace/Marketplace";
+import ComplianceQualidade from "@/pages/ComplianceQualidade/ComplianceQualidade";
+import Contato from '@/pages/Contato/Contato';
 
 const Routes = () => {
   return (
