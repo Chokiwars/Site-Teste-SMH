@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from 'react-i18next'; // ADICIONADO
+import { useTranslation } from 'react-i18next';
 
 const wordAnimation = {
   initial: { y: 50, opacity: 0 },
@@ -55,7 +55,6 @@ const cardVariants = {
   exit: { opacity: 0, y: -50, scale: 0.95 },
 };
 
-// ADICIONADO: Recebe a função `t` como prop
 function ClientsCarousel({ clients, t }) {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -130,18 +129,30 @@ function ClientsCarousel({ clients, t }) {
         </motion.div>
       </AnimatePresence>
 
+      {/* SETAS AINDA MAIS BAIXAS E RESPONSIVAS */}
       <motion.button
         onClick={prev}
-        className="absolute z-20 p-3 bg-white text-[var(--smh-900)] rounded-full shadow-lg transition border border-gray-200 left-0 top-1/2 -translate-y-1/2"
-        // MODIFICADO: Usa a função t()
+        className="
+          absolute z-20 p-3 bg-white text-[var(--smh-900)]
+          rounded-full shadow-lg transition border border-gray-200
+          left-0 
+          top-[68%] sm:top-[70%] lg:top-[72%]
+          -translate-y-1/2
+        "
         aria-label={t('clientsPage.carousel.prev')}
       >
         <ChevronLeft size={24} />
       </motion.button>
+
       <motion.button
         onClick={next}
-        className="absolute z-20 p-3 bg-white text-[var(--smh-900)] rounded-full shadow-lg transition border border-gray-200 right-0 top-1/2 -translate-y-1/2"
-        // MODIFICADO: Usa a função t()
+        className="
+          absolute z-20 p-3 bg-white text-[var(--smh-900)]
+          rounded-full shadow-lg transition border border-gray-200
+          right-0
+          top-[68%] sm:top-[70%] lg:top-[72%]
+          -translate-y-1/2
+        "
         aria-label={t('clientsPage.carousel.next')}
       >
         <ChevronRight size={24} />
@@ -158,7 +169,6 @@ function ClientsCarousel({ clients, t }) {
             }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="h-3 rounded-full"
-            // MODIFICADO: Usa a função t() com interpolação
             aria-label={t('clientsPage.carousel.slide', { number: i + 1 })}
           />
         ))}
@@ -168,11 +178,8 @@ function ClientsCarousel({ clients, t }) {
 }
 
 export default function SMHClientsCarousel() {
-  // ADICIONADO: Obtém a função de tradução
   const { t } = useTranslation();
 
-  // MODIFICADO: As chaves do objeto agora são programáticas (ex: "financial")
-  // Os nomes de exibição virão do arquivo JSON
   const groupedClients = {
     financial: [
       { id: 1, name: 'Banco do Brasil', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Banco_do_Brasil_logo.svg' },
@@ -241,7 +248,7 @@ export default function SMHClientsCarousel() {
       { id: 52, name: 'Telxius', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/58/Telxius_logo.svg' },
       { id: 53, name: 'Tim', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/02/TIM_logo_%282016-present%29.svg' },
       { id: 54, name: 'Oi', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Oi_logo_2022.png' },
-      { id: 55, name: 'Uol', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/UOL_logo.png'},
+      { id: 55, name: 'Uol', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/UOL_logo.png' },
       { id: 56, name: 'Net Claro Embratel', logoUrl: 'https://telesintese.com.br/wp-content/uploads/2019/01/Logo-NET-Claro-Embratel.jpg' },
       { id: 57, name: 'NWI telecom', logoUrl: 'https://media.datacenterdynamics.com/media/images/logo_nwi_telecom.2e16d0ba.fill-279x140.png' },
       { id: 58, name: 'WSnet', logoUrl: 'https://www.wsnetbrasil.com.br/media/img/LOGO.png' },
@@ -271,28 +278,24 @@ export default function SMHClientsCarousel() {
       `}</style>
 
       <AnimatedText
-        // MODIFICADO: Usa a função t()
         text={t('clientsPage.title')}
         className="text-3xl sm:text-4xl font-extrabold mt-14 mb-1 text-center justify-center"
         style={{ color: 'var(--smh-900)' }}
         delay={0.1}
       />
       <AnimatedText
-        // MODIFICADO: Usa a função t()
         text={t('clientsPage.subtitle')}
         className="mb-8 sm:mb-12 text-md sm:text-lg font-medium text-center justify-center"
         style={{ color: 'var(--smh-accent1)' }}
         delay={0.4}
       />
 
-      {/* MODIFICADO: Mapeia o objeto com chaves programáticas */}
       {Object.entries(groupedClients).map(([groupKey, clients]) => (
         <section key={groupKey} className="w-full max-w-6xl mx-auto mb-16">
-          {/* MODIFICADO: Busca o nome da categoria no JSON usando a chave */}
           <h2 className="text-2xl font-bold mb-6 text-center">
             {t(`clientsPage.categories.${groupKey}`)}
           </h2>
-          {/* ADICIONADO: Passa a função 't' para o componente filho */}
+
           <ClientsCarousel clients={clients} t={t} />
         </section>
       ))}
