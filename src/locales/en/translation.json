@@ -139,12 +139,7 @@
       "part1": "A technology that",
       "part2": "Protects"
     },
-    "words": [
-      "Businesses",
-      "Lives",
-      "Data",
-      "Information"
-    ],
+    "words": ["Businesses", "Lives", "Data", "Information"],
     "contact": "Contact Us",
     "prevImage": "Previous image",
     "nextImage": "Next image"
@@ -267,14 +262,14 @@
         "titulo": "Our History",
         "texto": "Founded with the purpose of providing modern and reliable systems, SMH was born from a passion for technology and a commitment to the safety of our clients. We develop customized projects, combining efficiency and simplicity.",
         "reverso": false,
-        "imagem": "src/assets/images/historia.jpeg"
+        "imagem": "@/assets/images/historia.jpeg"
       },
       {
         "id": "missao",
         "titulo": "Our Mission",
         "texto": "Ensure the peace of mind and satisfaction of our clients through safe, accessible, and technological solutions, promoting sustainable development and trust in every partnership.",
         "reverso": true,
-        "imagem": "src/assets/images/missao.jpg"
+        "imagem": "@/assets/images/missao.jpg"
       },
       {
         "id": "valores",
@@ -286,21 +281,21 @@
           "🌱 Sustainability and social responsibility"
         ],
         "reverso": false,
-        "imagem": "src/assets/images/valores.jpg"
+        "imagem": "@/assets/images/valores.jpg"
       },
       {
         "id": "equipe",
         "titulo": "Our Team",
         "texto": "We have a multidisciplinary team passionate about technology and innovation. Each member contributes unique skills to make our products and services even better.",
         "reverso": true,
-        "imagem": "src/assets/images/equipe.jpg"
+        "imagem": "@/assets/images/equipe.jpg"
       },
       {
         "id": "contato",
         "titulo": "Get in Touch",
         "texto": "Want to know more about us or have questions? We would be happy to talk to you! 📧 <span class='font-semibold text-[#ff4747]'>smh@smh.com.br</span>",
         "reverso": false,
-        "imagem": "src/assets/images/contato.png"
+        "imagem": "@/assets/images/contato.png"
       }
     ]
   },
@@ -390,31 +385,17 @@
       {
         "title": "Preventive Maintenance",
         "description": "We perform periodic inspections and technical adjustments to prevent failures and keep systems always operational.",
-        "features": [
-          "One-time",
-          "Periodic",
-          "Performance Optimization"
-        ]
+        "features": ["One-time", "Periodic", "Performance Optimization"]
       },
       {
         "title": "Corrective Maintenance",
         "description": "We act on the immediate identification and repair of failures, quickly restoring system functionality.",
-        "features": [
-          "Infrastructure",
-          "Equipment",
-          "Labor",
-          "24/7 Support"
-        ]
+        "features": ["Infrastructure", "Equipment", "Labor", "24/7 Support"]
       },
       {
         "title": "System Adaptation",
         "description": "We adapt and update existing systems to meet technical standards and specific client needs.",
-        "features": [
-          "Infrastructure",
-          "Equipment",
-          "Labor",
-          "Legal Compliance"
-        ]
+        "features": ["Infrastructure", "Equipment", "Labor", "Legal Compliance"]
       },
       {
         "title": "Leak Test",
